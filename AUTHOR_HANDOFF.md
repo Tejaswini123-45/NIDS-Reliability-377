@@ -41,6 +41,12 @@ their fitted vocabulary.
 
 ## Scope and open concerns
 
+Table 8 uses full-data measurements for both benchmarks. The UNSW rerun
+reproduced the published metrics and recorded 20 Logistic Regression fits
+without convergence warnings. The offline adaptive alarm detected the
+controlled change in three of five seeded replays, usually after a delay.
+[Computational costs](paper_assets/tables/table8_computational_costs.csv) · [Adaptive and live validation](audit/adaptive_live_validation.md)
+
 The `src/anids/` prototype has a PyTorch MLP detector, K-means outlier-window
 threshold variants, and an experimental CTGAN replay module. Its smoke
 tests exercise components and do not provide comparative benchmark

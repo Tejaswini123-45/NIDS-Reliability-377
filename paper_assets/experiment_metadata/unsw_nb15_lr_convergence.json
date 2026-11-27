@@ -1,0 +1,209 @@
+{
+  "transparency_note": "Terminating below max_iter indicates stopping tolerance (1e-3) was satisfied; reaching max_iter indicates iteration boundary was encountered. Iteration count alone is not claimed as mathematical proof of global optimality.",
+  "coverage_summary": {
+    "total_records_logged": 20,
+    "seeds_evaluated": [
+      42,
+      52,
+      62,
+      72,
+      82
+    ],
+    "tasks_evaluated": [
+      "binary",
+      "multiclass"
+    ],
+    "all_converged_without_warning": true,
+    "convergence_warnings_count": 0,
+    "multiclass_n_iter_range": [
+      71,
+      96
+    ],
+    "binary_n_iter_range": [
+      34,
+      43
+    ]
+  },
+  "records_all_seeds_and_tasks": [
+    {
+      "task": "multiclass",
+      "condition": "Reference",
+      "seed": 42,
+      "n_iter": 77,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Temporal",
+      "seed": 42,
+      "n_iter": 96,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Reference",
+      "seed": 42,
+      "n_iter": 39,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Temporal",
+      "seed": 42,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Reference",
+      "seed": 52,
+      "n_iter": 73,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Temporal",
+      "seed": 52,
+      "n_iter": 96,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Reference",
+      "seed": 52,
+      "n_iter": 34,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Temporal",
+      "seed": 52,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Reference",
+      "seed": 62,
+      "n_iter": 71,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Temporal",
+      "seed": 62,
+      "n_iter": 96,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Reference",
+      "seed": 62,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Temporal",
+      "seed": 62,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Reference",
+      "seed": 72,
+      "n_iter": 90,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Temporal",
+      "seed": 72,
+      "n_iter": 96,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Reference",
+      "seed": 72,
+      "n_iter": 43,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Temporal",
+      "seed": 72,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Reference",
+      "seed": 82,
+      "n_iter": 81,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "multiclass",
+      "condition": "Temporal",
+      "seed": 82,
+      "n_iter": 96,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Reference",
+      "seed": 82,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    },
+    {
+      "task": "binary",
+      "condition": "Temporal",
+      "seed": 82,
+      "n_iter": 36,
+      "max_iter": 300,
+      "converged_without_warning": true,
+      "warnings_captured": []
+    }
+  ]
+}

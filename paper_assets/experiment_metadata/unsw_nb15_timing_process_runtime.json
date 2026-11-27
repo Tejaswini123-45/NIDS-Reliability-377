@@ -1,0 +1,9 @@
+{
+  "peak_resident_bytes": 1405423616,
+  "scope": "Whole experiment process through validation and artifact export",
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "2",
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": null
+  }
+}

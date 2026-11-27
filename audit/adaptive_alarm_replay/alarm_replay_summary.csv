@@ -1,0 +1,11 @@
+Seed,Threshold,Clean windows,Stressed windows,False alarms,Stressed alarms,Precision,Detection delay windows
+42,Fixed,7,8,0,0,,
+42,Adaptive,7,8,0,1,1.0,6.0
+52,Fixed,7,8,0,0,,
+52,Adaptive,7,8,0,0,,
+62,Fixed,7,8,0,0,,
+62,Adaptive,7,8,0,2,1.0,1.0
+72,Fixed,7,8,0,0,,
+72,Adaptive,7,8,0,1,1.0,5.0
+82,Fixed,7,8,0,0,,
+82,Adaptive,7,8,0,0,,

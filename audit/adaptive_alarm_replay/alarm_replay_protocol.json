@@ -1,0 +1,17 @@
+{
+  "scope": "Offline alarm-only evaluation with an imposed feature-missingness change",
+  "dataset_order": "Seeded replay order of official test records after exact overlap exclusion",
+  "seeds": [
+    42,
+    52,
+    62,
+    72,
+    82
+  ],
+  "window_size": 5000,
+  "fit_rows": 20000,
+  "calibration_windows": 8,
+  "missingness_rate_after_midpoint": 0.2,
+  "threshold": "Calibration mean plus two population SDs. Adaptive uses the preceding eight scores.",
+  "scoring_time": "Feature transformation, clustering distances, and threshold calculation"
+}

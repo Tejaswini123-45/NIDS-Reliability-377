@@ -81,5 +81,7 @@ behind the checked-in tables and figures in `paper_assets/`. The full
 prediction archives and split IDs are generated locally by the commands
 above. Both dataset snapshots contain 180 verified full-data evaluations
 across five seeds. The [cross-dataset comparison](paper_assets/cross_dataset/comparison_metadata.json)
-is descriptive. UNSW-NB15 metrics were recovered from saved predictions,
-and its computational-cost table uses labeled capped-run measurements.
+is descriptive. A fresh UNSW-NB15 run reproduced the published evaluation
+metrics and supplied full-data timing and convergence records. The
+[adaptive alarm audit](audit/adaptive_live_validation.md) is a separate
+offline experiment on benchmark flows.
