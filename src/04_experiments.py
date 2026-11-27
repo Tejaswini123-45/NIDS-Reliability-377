@@ -1,3 +1,6 @@
+from time import perf_counter
+from src.evidence import save_split
+
 # Auto-extracted from CICIDS2017_Reliability_Framework_Final_Optimized_v6_FIXED.ipynb
 # Cell order is preserved intentionally for reproducibility.
 
@@ -58,6 +61,7 @@ def run_one_seed(seed):
     # Materialize each split once and fit the median imputer once.
     prepared = {}
     for split_name, (fit_idx, test_idx) in split_indices.items():
+        save_split(OUTPUT_DIR, seed, split_name, fit_idx, test_idx, y_all)
         X_train_raw = take_sorted_rows(fit_idx)
         X_test_raw = take_sorted_rows(test_idx)
         X_train_imputed, imputer = fit_train_imputer(X_train_raw)
@@ -96,6 +100,7 @@ def run_one_seed(seed):
                 print(f"  -> {model_name}")
 
                 # One fit per model/split/task. All three stress levels reuse it.
+                start_fit = perf_counter()
                 fitted = fit_model_for_split(
                     model_name=model_name,
                     X_train_imputed=p["X_train_imputed"],
@@ -105,6 +110,7 @@ def run_one_seed(seed):
                     binary=binary,
                 )
 
+                fit_seconds = perf_counter() - start_fit
                 for condition, missingness in CONDITION_SPECS:
                     if condition.startswith(split_name):
                         result = evaluate_fitted(
@@ -117,6 +123,9 @@ def run_one_seed(seed):
                             binary=binary,
                             missingness=missingness,
                             seed=seed,
+                            test_idx=test_idx,
+                            seen=np.unique(y_train),
+                            fit_seconds=fit_seconds,
                         )
                         rows.append(result)
 

@@ -1,3 +1,5 @@
+> **Historical document.** This predates the paper 377 revision audit. See the current README, benchmark manifest and prediction-audited evidence for the revised protocol.
+
 # Experiment Design: CICIDS2017 Reliability Evaluation
 
 ## Research objective and scope

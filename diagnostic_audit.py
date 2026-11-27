@@ -17,6 +17,7 @@ Usage: python diagnostic_audit.py
 
 from pathlib import Path
 import json
+import os
 import sys
 import pandas as pd
 import numpy as np
@@ -28,15 +29,16 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 ROOT = Path(__file__).resolve().parent
+RUNS = Path(os.environ.get("NIDS_OUTPUT_ROOT", ROOT / "verified_runs"))
 
 # Support targeting UNSW-NB15 or CICIDS2017 results
-target_dir = ROOT / "results"
+target_dir = RUNS / "cicids2017"
 if len(sys.argv) > 1 and sys.argv[1].lower() in ["unsw", "unsw_nb15", "--unsw"]:
-    target_dir = ROOT / "results" / "unsw_nb15"
-elif len(sys.argv) > 1 and sys.argv[1].lower() in ["cicids", "cicids2017", "--cicids"]:
-    target_dir = ROOT / "results" / "cicids2017" if (ROOT / "results" / "cicids2017").exists() else ROOT / "results"
-elif (ROOT / "results" / "unsw_nb15").exists() and not (ROOT / "results" / "validation.json").exists():
-    target_dir = ROOT / "results" / "unsw_nb15"
+    target_dir = RUNS / "unsw_nb15"
+
+from verify_run import verify
+
+verify(target_dir)
 
 RESULTS = target_dir
 

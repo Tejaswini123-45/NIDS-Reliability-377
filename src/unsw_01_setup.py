@@ -14,13 +14,6 @@ import time
 import numpy as np
 import pandas as pd
 
-# Ensure Hugging Face hub client is available for automatic dataset download
-try:
-    from huggingface_hub import snapshot_download, hf_hub_download
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "huggingface_hub>=0.24.0"])
-    from huggingface_hub import snapshot_download, hf_hub_download
-
 # Base seeds for reproducibility (matching CICIDS2017 Part A protocol)
 SEED = 42
 SEEDS = [42, 52, 62, 72, 82]
@@ -28,8 +21,8 @@ SEEDS = [42, 52, 62, 72, 82]
 # ---------------- RUN MODES ----------------
 # QUICK_VALIDATION: bounded training partition (e.g., 50k rows) and single seed for rapid verification
 # PAPER_MODE: full verified training partition across all five seeds [42, 52, 62, 72, 82]
-QUICK_VALIDATION = False
-PAPER_MODE = True
+QUICK_VALIDATION = os.environ.get("NIDS_QUICK") == "1"
+PAPER_MODE = not QUICK_VALIDATION
 RUN_EXPERIMENTS = True
 
 FAST_TRAIN_SAMPLES = 50_000
@@ -51,17 +44,8 @@ if _cur_file.parent.name == "src":
 else:
     ROOT_DIR = _cur_file.parent
 
-OUTPUT_DIR = ROOT_DIR / "results" / "unsw_nb15"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-# ---------------- DATASET SOURCING & PATHS ----------------
-LOCAL_DATA_DIR = ROOT_DIR / "data" / "unsw_nb15"
-HF_CACHE_DIR = Path.home() / ".cache" / "huggingface" / "hub" / "datasets--Mouwiya--UNSW-NB15-small" / "snapshots" / "6f5f54594dfc80c84264aec4c7cc3d9b162f1e2f"
-HF_SOURCE_PREFERENCE = [
-    "Mouwiya/UNSW-NB15-small",
-    "Mireu-Lab/UNSW-NB15",
-    "lacg030175/UNSW-NB15",
-]
+from src.evidence import output_directory
+OUTPUT_DIR = output_directory("unsw_nb15")
 
 # Forbidden proxy features: Flow duration, packet counts, bytes, or IAT must NEVER serve as fake timestamps
 FORBIDDEN_TIMESTAMP_FEATURES = {
@@ -95,15 +79,9 @@ from sklearn.metrics import (
     confusion_matrix, classification_report
 )
 
-try:
-    from xgboost import XGBClassifier
-    XGB_AVAILABLE = True
-except Exception:
-    XGB_AVAILABLE = False
-    print("Installing XGBoost...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "xgboost"])
-    from xgboost import XGBClassifier
-    XGB_AVAILABLE = True
+from xgboost import XGBClassifier
+
+XGB_AVAILABLE = True
 
 # Reproducibility initialization
 np.random.seed(SEED)

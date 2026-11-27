@@ -77,57 +77,11 @@ schema_infos = sorted(
     key=lambda x: (capture_day_rank(x["path"].name), x["path"].name.casefold())
 )
 
-# Decide temporal provenance before loading the full feature matrix.
-TIMESTAMP_VALIDITY_THRESHOLD = 0.90
-TIMESTAMP_SAMPLE_ROWS = 20000
-preflight_timestamp = []
-
-has_timestamp_flags = [info["timestamp"] is not None for info in schema_infos]
-ROW_TIMESTAMP_MODE = all(has_timestamp_flags)
-
-if any(has_timestamp_flags) and not ROW_TIMESTAMP_MODE:
-    print("Mixed Timestamp availability -> using capture-day temporal mode.")
-
-if ROW_TIMESTAMP_MODE:
-    print("\nPreflight: checking actual Timestamp quality...")
-    for info in schema_infos:
-        sample = pd.read_csv(
-            info["path"], usecols=[info["timestamp"]], nrows=TIMESTAMP_SAMPLE_ROWS,
-            encoding="cp1252", engine="c"
-        )
-        parsed_sample, sample_validity = parse_cicids_timestamp(sample[info["timestamp"]])
-        valid_sample = parsed_sample.dropna()
-        sample_min = valid_sample.min() if not valid_sample.empty else None
-        sample_max = valid_sample.max() if not valid_sample.empty else None
-        preflight_timestamp.append({
-            "file": str(info["path"]), "sample_validity": float(sample_validity),
-            "sample_min": None if sample_min is None else str(sample_min),
-            "sample_max": None if sample_max is None else str(sample_max)
-        })
-        print(f"  {info['path'].name}: {sample_validity:.2%} valid")
-        del sample, parsed_sample
-        gc.collect()
-
-    if any(x["sample_validity"] < TIMESTAMP_VALIDITY_THRESHOLD for x in preflight_timestamp):
-        print("Actual Timestamp values are incomplete/invalid for row-level ordering.")
-        print("Using whole CICIDS2017 capture-day/source-file order instead.")
-        print("No timestamp will be fabricated from partial values.")
-        ROW_TIMESTAMP_MODE = False
-    else:
-        for x in preflight_timestamp:
-            for key in ("sample_min", "sample_max"):
-                if x[key] is not None:
-                    dt = pd.Timestamp(x[key])
-                    if not (pd.Timestamp("2017-07-01") <= dt <= pd.Timestamp("2017-07-10")):
-                        print("Suspicious Timestamp date range detected -> capture-day mode.")
-                        ROW_TIMESTAMP_MODE = False
-                        break
-            if not ROW_TIMESTAMP_MODE:
-                break
-
-print("Temporal provenance selected:", "ROW_TIMESTAMP" if ROW_TIMESTAMP_MODE else "CAPTURE_DAY")
+# The revision protocol uses whole capture-day files.
+ROW_TIMESTAMP_MODE = False  # Preserve the Monday–Thursday / Friday revision protocol.
 
 feature_parts = []
+part_feature_names = []
 label_parts = []
 timestamp_parts = []
 source_file_parts = []
@@ -181,18 +135,25 @@ for file_id, info in enumerate(schema_infos):
         keep &= parsed_ts.notna()
     else:
         fmin = fmax = None
-        print("  Row-level Timestamp: unavailable; using capture-day provenance.")
+        print("  Using capture-day provenance. Row timestamps are outside this split definition.")
 
     feature_cols = [
         c for c in part.columns
-        if c != label_col_file and c != timestamp_col_file
+        if normalize_header_name(c).replace("_", " ") not in {
+            "label", "timestamp", "flow id", "id", "src ip", "dst ip", "source ip",
+            "destination ip", "src ip dec", "dst ip dec", "src port", "dst port",
+            "source day", "source file", "capture day", "attempted category",
+        }
     ]
 
+    raw_missing = infinite_cells = invalid_numeric_cells = 0
     numeric_dict = {}
     for c in feature_cols:
         values = pd.to_numeric(part[c], errors="coerce")
-        if values.notna().any():
-            numeric_dict[c] = values.astype(np.float32)
+        raw_missing += int(part[c].isna().sum())
+        infinite_cells += int(np.isinf(values).sum())
+        invalid_numeric_cells += int((values.isna() & part[c].notna()).sum())
+        numeric_dict[c] = values.astype(np.float32)
 
     if reference_feature_names is None:
         reference_feature_names = list(numeric_dict.keys())
@@ -229,6 +190,7 @@ for file_id, info in enumerate(schema_infos):
     X_arr[~np.isfinite(X_arr)] = np.nan
 
     feature_parts.append(X_arr)
+    part_feature_names.append(list(reference_feature_names))
     label_parts.append(labels.loc[keep].to_numpy(dtype=str))
     source_file_parts.append(np.full(int(keep.sum()), file_id, dtype=np.int16))
     source_day_parts.append(np.full(
@@ -244,6 +206,13 @@ for file_id, info in enumerate(schema_infos):
     file_validation.append({
         "file": str(path),
         "rows_loaded": int(keep.sum()),
+        "raw_rows": len(part),
+        "raw_columns": list(part.columns),
+        "numeric_feature_count_before_intersection": len(numeric_dict),
+        "raw_missing_candidate_cells": raw_missing,
+        "infinite_candidate_cells": infinite_cells,
+        "nonnumeric_candidate_cells": invalid_numeric_cells,
+        "label_counts": {str(k): int(v) for k, v in labels.loc[keep].value_counts().items()},
         "capture_day": capture_day_rank(path.name),
         "timestamp_validity": None if validity is None else float(validity),
         "timestamp_min": None if fmin is None else str(fmin),
@@ -256,7 +225,11 @@ for file_id, info in enumerate(schema_infos):
     del part, numeric_dict, X_part, X_arr, parsed_ts, labels
     gc.collect()
 
-X_matrix = np.concatenate(feature_parts, axis=0).astype(np.float32, copy=False)
+# Align previously loaded files to the final column intersection.
+X_matrix = np.concatenate([
+    part if columns == reference_feature_names else part[:, [columns.index(c) for c in reference_feature_names]]
+    for part, columns in zip(feature_parts, part_feature_names)
+], axis=0).astype(np.float32, copy=False)
 y_multiclass = np.concatenate(label_parts)
 source_file_ids = np.concatenate(source_file_parts)
 source_day_ids = np.concatenate(source_day_parts)
@@ -322,6 +295,8 @@ if len(unique_idx) < n_before:
         timestamps = timestamps[unique_idx]
 
 print("Duplicate rows removed:", n_before - len(unique_idx))
+for index, report in enumerate(file_validation):
+    report["duplicates_removed"] = report["rows_loaded"] - int(np.count_nonzero(source_file_ids == index))
 print("Rows after cleaning:", len(y_multiclass))
 print("Classes:", len(np.unique(y_multiclass)))
 
@@ -337,18 +312,16 @@ if X_matrix.ndim != 2 or X_matrix.shape[0] != len(y_multiclass):
 if source_file_ids.shape[0] != len(y_multiclass):
     raise ValueError("Source-file provenance is misaligned with features/labels.")
 
-# Remove columns that are entirely missing.
+# Fail on an unexpected source-wide schema issue rather than selecting
+# predictors based on the held-out values.
 all_missing = np.all(np.isnan(X_matrix), axis=0)
 if all_missing.any():
-    removed_features = [
+    missing_features = [
         numeric_features[i] for i, flag in enumerate(all_missing) if flag
     ]
-    X_matrix = X_matrix[:, ~all_missing]
-    numeric_features = [
-        c for i, c in enumerate(numeric_features) if not all_missing[i]
-    ]
-else:
-    removed_features = []
+    raise ValueError(f"Source-wide missing predictors: {missing_features}")
+
+removed_features = []
 
 X_matrix[~np.isfinite(X_matrix)] = np.nan
 

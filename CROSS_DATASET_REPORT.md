@@ -1,3 +1,5 @@
+> **Historical document.** This predates the paper 377 revision audit. See the current README, benchmark manifest and prediction-audited evidence for the revised protocol.
+
 # Cross-Dataset Reliability Evaluation Report
 ## Comparative Analysis of ML-Based NIDS Under Temporal and Controlled Stress Conditions: CICIDS2017 vs. UNSW-NB15
 

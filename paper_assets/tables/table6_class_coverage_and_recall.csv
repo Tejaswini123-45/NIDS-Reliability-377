@@ -1,0 +1,1387 @@
+Class,Seen in training,Test support,Recall,Train,Test only,Seed,Task,Model,Condition,Dataset
+BENIGN,True,299019,0.9984449148716302,83683,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Botnet,True,147,0.0340136054421768,41,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Botnet - Attempted,True,240,0.0,67,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DDoS,True,19029,0.9997372431551842,5325,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS GoldenEye,True,1513,0.9120951751487112,423,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.0,4,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS Hulk,True,31694,0.9991796554552912,8870,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS Hulk - Attempted,True,116,0.3448275862068966,32,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS Slowhttptest,True,348,0.5316091954022989,97,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.9688427299703264,188,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS Slowloris,True,772,0.8562176165803109,216,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.8888888888888888,103,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+FTP-Patator,True,794,0.9949622166246852,222,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Heartbleed,True,2,1.0,1,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Infiltration - Portscan,True,1225,0.8595918367346939,343,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Portscan,True,337,0.2700296735905044,94,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+SSH-Patator,True,592,0.9847972972972971,166,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Web Attack - Brute Force,True,15,0.0,4,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.0,72,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Web Attack - XSS,True,4,0.0,2,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0,37,False,42,multiclass,Logistic Regression,Reference,CICIDS2017
+BENIGN,True,299019,0.9955955976041656,83683,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Botnet,True,147,0.0340136054421768,41,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Botnet - Attempted,True,240,0.0041666666666666,67,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DDoS,True,19029,0.9954280309002048,5325,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS GoldenEye,True,1513,0.7739590218109715,423,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.0,4,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS Hulk,True,31694,0.8880860730737679,8870,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,116,0.3448275862068966,32,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS Slowhttptest,True,348,0.3850574712643678,97,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.5830860534124629,188,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS Slowloris,True,772,0.6113989637305699,216,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.5853658536585366,103,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+FTP-Patator,True,794,0.7934508816120907,222,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Heartbleed,True,2,1.0,1,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Infiltration - Portscan,True,1225,0.7020408163265306,343,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Portscan,True,337,0.2106824925816023,94,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+SSH-Patator,True,592,0.7094594594594594,166,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Web Attack - Brute Force,True,15,0.0666666666666666,4,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.0,72,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Web Attack - XSS,True,4,0.0,2,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0,37,False,42,multiclass,Logistic Regression,Reference+10% Missingness,CICIDS2017
+BENIGN,True,299019,0.9928532969476856,83683,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Botnet,True,147,0.0272108843537414,41,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Botnet - Attempted,True,240,0.0041666666666666,67,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DDoS,True,19029,0.974302380577014,5325,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS GoldenEye,True,1513,0.6338400528750826,423,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.0,4,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS Hulk,True,31694,0.7160976841042469,8870,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,116,0.1896551724137931,32,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS Slowhttptest,True,348,0.2758620689655172,97,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.3827893175074184,188,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS Slowloris,True,772,0.466321243523316,216,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.3766937669376693,103,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+FTP-Patator,True,794,0.6221662468513854,222,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Heartbleed,True,2,0.5,1,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Infiltration - Portscan,True,1225,0.5657142857142857,343,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Portscan,True,337,0.1305637982195845,94,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+SSH-Patator,True,592,0.5489864864864865,166,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Web Attack - Brute Force,True,15,0.2666666666666666,4,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.0,72,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Web Attack - XSS,True,4,0.0,2,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0,37,False,42,multiclass,Logistic Regression,Reference+20% Missingness,CICIDS2017
+BENIGN,True,299019,0.999451539868704,83683,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Botnet,True,147,0.9659863945578232,41,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Botnet - Attempted,True,240,0.8708333333333333,67,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DDoS,True,19029,0.9998948972620736,5325,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS GoldenEye,True,1513,0.9887640449438202,423,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.75,4,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS Hulk,True,31694,0.9997160345806776,8870,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS Hulk - Attempted,True,116,0.9051724137931034,32,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS Slowhttptest,True,348,0.9798850574712644,97,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.9925816023738872,188,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS Slowloris,True,772,0.9792746113989638,216,False,42,multiclass,Random Forest,Reference,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.997289972899729,103,False,42,multiclass,Random Forest,Reference,CICIDS2017
+FTP-Patator,True,794,0.9974811083123426,222,False,42,multiclass,Random Forest,Reference,CICIDS2017
+FTP-Patator - Attempted,True,2,1.0,2,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Heartbleed,True,2,0.0,1,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Infiltration - Portscan,True,1225,0.946938775510204,343,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Portscan,True,337,0.827893175074184,94,False,42,multiclass,Random Forest,Reference,CICIDS2017
+SSH-Patator,True,592,0.9881756756756755,166,False,42,multiclass,Random Forest,Reference,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Web Attack - Brute Force,True,15,0.9333333333333332,4,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.810077519379845,72,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Web Attack - XSS,True,4,0.75,2,False,42,multiclass,Random Forest,Reference,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.1679389312977099,37,False,42,multiclass,Random Forest,Reference,CICIDS2017
+BENIGN,True,299019,0.9996287861306472,83683,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Botnet,True,147,0.8503401360544217,41,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Botnet - Attempted,True,240,0.7875,67,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DDoS,True,19029,0.993483630248568,5325,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS GoldenEye,True,1513,0.7964309319233311,423,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.625,4,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS Hulk,True,31694,0.9076481352937464,8870,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,116,0.8793103448275862,32,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS Slowhttptest,True,348,0.8218390804597702,97,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.9183976261127595,188,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS Slowloris,True,772,0.9028497409326424,216,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.940379403794038,103,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+FTP-Patator,True,794,0.9836272040302269,222,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,2,0.5,2,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Heartbleed,True,2,0.0,1,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Infiltration - Portscan,True,1225,0.9036734693877552,343,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Portscan,True,337,0.7804154302670623,94,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+SSH-Patator,True,592,0.9712837837837838,166,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Web Attack - Brute Force,True,15,0.9333333333333332,4,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.6589147286821705,72,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Web Attack - XSS,True,4,0.75,2,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0763358778625954,37,False,42,multiclass,Random Forest,Reference+10% Missingness,CICIDS2017
+BENIGN,True,299019,0.99983613081443,83683,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Botnet,True,147,0.54421768707483,41,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Botnet - Attempted,True,240,0.6083333333333333,67,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DDoS,True,19029,0.9183351726312472,5325,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS GoldenEye,True,1513,0.3298083278255122,423,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.375,4,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS Hulk,True,31694,0.597021518268442,8870,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,116,0.5086206896551724,32,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS Slowhttptest,True,348,0.4195402298850574,97,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.5816023738872403,188,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS Slowloris,True,772,0.5077720207253886,216,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.6856368563685636,103,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+FTP-Patator,True,794,0.8324937027707808,222,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Heartbleed,True,2,0.0,1,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Infiltration - Portscan,True,1225,0.7534693877551021,343,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Portscan,True,337,0.6201780415430267,94,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+SSH-Patator,True,592,0.8209459459459459,166,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Web Attack - Brute Force,True,15,0.7333333333333333,4,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.2906976744186046,72,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Web Attack - XSS,True,4,0.5,2,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0534351145038167,37,False,42,multiclass,Random Forest,Reference+20% Missingness,CICIDS2017
+BENIGN,True,299019,0.9996555402833932,83683,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Botnet,True,147,0.8979591836734694,41,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Botnet - Attempted,True,240,0.8166666666666667,67,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DDoS,True,19029,0.9997897945241474,5325,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS GoldenEye,True,1513,0.9861202908129544,423,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.0,4,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS Hulk,True,31694,0.9996213794409036,8870,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS Hulk - Attempted,True,116,0.9051724137931034,32,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS Slowhttptest,True,348,0.9310344827586208,97,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.9925816023738872,188,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS Slowloris,True,772,0.9792746113989638,216,False,42,multiclass,XGBoost,Reference,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.9214092140921408,103,False,42,multiclass,XGBoost,Reference,CICIDS2017
+FTP-Patator,True,794,0.9974811083123426,222,False,42,multiclass,XGBoost,Reference,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Heartbleed,True,2,0.0,1,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Infiltration - Portscan,True,1225,0.9477551020408164,343,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Portscan,True,337,0.7893175074183977,94,False,42,multiclass,XGBoost,Reference,CICIDS2017
+SSH-Patator,True,592,0.9780405405405406,166,False,42,multiclass,XGBoost,Reference,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Web Attack - Brute Force,True,15,0.0,4,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.8798449612403101,72,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Web Attack - XSS,True,4,0.0,2,False,42,multiclass,XGBoost,Reference,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.099236641221374,37,False,42,multiclass,XGBoost,Reference,CICIDS2017
+BENIGN,True,299019,0.999762556894378,83683,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Botnet,True,147,0.6870748299319728,41,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Botnet - Attempted,True,240,0.5583333333333333,67,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DDoS,True,19029,0.9497608912712177,5325,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS GoldenEye,True,1513,0.7633840052875083,423,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.0,4,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS Hulk,True,31694,0.8139710986306556,8870,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,116,0.5258620689655172,32,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS Slowhttptest,True,348,0.6724137931034483,97,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.6008902077151336,188,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS Slowloris,True,772,0.8095854922279793,216,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.8102981029810298,103,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+FTP-Patator,True,794,0.7871536523929471,222,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Heartbleed,True,2,0.0,1,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Infiltration - Portscan,True,1225,0.8114285714285714,343,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Portscan,True,337,0.5489614243323442,94,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+SSH-Patator,True,592,0.8327702702702703,166,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Web Attack - Brute Force,True,15,0.0,4,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.5736434108527132,72,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Web Attack - XSS,True,4,0.0,2,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0610687022900763,37,False,42,multiclass,XGBoost,Reference+10% Missingness,CICIDS2017
+BENIGN,True,299019,0.9998695735053624,83683,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Botnet,True,147,0.4557823129251701,41,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Botnet - Attempted,True,240,0.2666666666666666,67,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DDoS,True,19029,0.7823847811235483,5325,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS GoldenEye,True,1513,0.5512227362855254,423,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,16,0.0,4,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS Hulk,True,31694,0.6378178835110746,8870,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,116,0.1551724137931034,32,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS Slowhttptest,True,348,0.3563218390804598,97,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,674,0.3382789317507418,188,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS Slowloris,True,772,0.5816062176165803,216,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,369,0.5176151761517616,103,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+FTP-Patator,True,794,0.5025188916876574,222,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,2,0.0,2,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Heartbleed,True,2,0.0,1,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Infiltration,True,7,0.0,2,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Infiltration - Attempted,True,9,0.0,2,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Infiltration - Portscan,True,1225,0.6375510204081632,343,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Portscan,True,337,0.228486646884273,94,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+SSH-Patator,True,592,0.6537162162162162,166,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,5,0.0,1,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Web Attack - Brute Force,True,15,0.0,4,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,258,0.3488372093023256,72,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,3,0.0,2,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,1,0.0,1,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Web Attack - XSS,True,4,0.0,2,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,131,0.0305343511450381,37,False,42,multiclass,XGBoost,Reference+20% Missingness,CICIDS2017
+BENIGN,True,271498,0.9961362514640992,86391,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,Logistic Regression,Temporal,CICIDS2017
+BENIGN,True,271498,0.9944603643489086,86391,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,CICIDS2017
+BENIGN,True,271498,0.9931933200244568,86391,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,CICIDS2017
+BENIGN,True,271498,0.9998268863859034,86391,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,Random Forest,Temporal,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,Random Forest,Temporal,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,Random Forest,Temporal,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,Random Forest,Temporal,CICIDS2017
+BENIGN,True,271498,0.9998784521432938,86391,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,Random Forest,Temporal+10% Missingness,CICIDS2017
+BENIGN,True,271498,0.9999447509742244,86391,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,Random Forest,Temporal+20% Missingness,CICIDS2017
+BENIGN,True,271498,0.9997974202388232,86391,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,XGBoost,Temporal,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,XGBoost,Temporal,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,XGBoost,Temporal,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,XGBoost,Temporal,CICIDS2017
+BENIGN,True,271498,0.9998710856065238,86391,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,XGBoost,Temporal+10% Missingness,CICIDS2017
+BENIGN,True,271498,0.9999226513639142,86391,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Botnet,False,736,0.0,0,True,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Botnet - Attempted,False,1198,0.0,0,True,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DDoS,False,95144,0.0,0,True,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS GoldenEye,True,0,,534,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS GoldenEye - Attempted,True,0,,5,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS Hulk,True,0,,11188,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS Hulk - Attempted,True,0,,41,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS Slowhttptest,True,0,,123,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS Slowhttptest - Attempted,True,0,,238,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS Slowloris,True,0,,272,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+DoS Slowloris - Attempted,True,0,,130,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+FTP-Patator,True,0,,280,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+FTP-Patator - Attempted,True,0,,2,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Heartbleed,True,0,,2,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Infiltration,True,0,,2,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Infiltration - Attempted,True,0,,3,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Infiltration - Portscan,True,0,,432,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Portscan,False,1683,0.0,0,True,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+SSH-Patator,True,0,,209,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+SSH-Patator - Attempted,True,0,,2,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Web Attack - Brute Force,True,0,,5,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Web Attack - Brute Force - Attempted,True,0,,91,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Web Attack - SQL Injection,True,0,,2,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Web Attack - SQL Injection - Attempted,True,0,,1,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Web Attack - XSS,True,0,,1,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Web Attack - XSS - Attempted,True,0,,46,False,42,multiclass,XGBoost,Temporal+20% Missingness,CICIDS2017
+Analysis,True,535,0.0373831775700934,2142,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Backdoor,True,466,0.0,1863,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+DoS,True,3271,0.0363803118312442,13082,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Exploits,True,8905,0.8527793374508703,35620,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4275108269746339,19397,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Generic,True,11774,0.9731612026499066,47097,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Normal,True,18600,0.9061290322580644,74400,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.6336669049320943,11189,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Worms,True,35,0.0,139,False,42,multiclass,Logistic Regression,Reference,UNSW-NB15
+Analysis,True,535,0.216822429906542,2142,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Backdoor,True,466,0.1695278969957081,1863,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+DoS,True,3271,0.6004280036686028,13082,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Exploits,True,8905,0.5286917462099944,35620,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Fuzzers,True,4849,0.8319241080635182,19397,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Generic,True,11774,0.9731612026499066,47097,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Normal,True,18600,0.7352150537634409,74400,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.8238027162258756,11189,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Shellcode,True,302,0.8741721854304636,1209,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Worms,True,35,0.6285714285714286,139,False,42,multiclass,Random Forest,Reference,UNSW-NB15
+Analysis,True,535,0.0467289719626168,2142,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Backdoor,True,466,0.0665236051502145,1863,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+DoS,True,3271,0.044023234484867,13082,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Exploits,True,8905,0.9319483436271756,35620,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4609197772736647,19397,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Generic,True,11774,0.9774078478002378,47097,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Normal,True,18600,0.9456989247311828,74400,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.7587562544674767,11189,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Shellcode,True,302,0.5927152317880795,1209,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Worms,True,35,0.2285714285714285,139,False,42,multiclass,XGBoost,Reference,UNSW-NB15
+Analysis,True,535,0.0205607476635514,2142,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0021459227467811,1863,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0620605319474166,13082,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.7821448624368332,35620,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3806970509383378,19397,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9620349923560388,47097,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.8670430107526882,74400,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.5235882773409578,11189,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,42,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.1514018691588785,2142,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.2060085836909871,1863,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.5692448792418221,13082,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.5390230207748455,35620,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.8082078779129718,19397,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9723118736198404,47097,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.7502150537634409,74400,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7898498927805575,11189,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.8079470198675497,1209,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.3142857142857143,139,False,42,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0411214953271028,2142,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0536480686695279,1863,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0412717823295628,13082,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.9084783829309376,35620,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4664879356568364,19397,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9753694581280788,47097,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.9194623655913978,74400,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7634024303073624,11189,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.4569536423841059,1209,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.1714285714285714,139,False,42,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0186915887850467,2142,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0,1863,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.0703148884133292,13082,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.7241998877035374,35620,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3398638894617447,19397,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9436894853066078,47097,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8443010752688173,74400,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.4210150107219442,11189,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,42,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0953271028037383,2142,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.2639484978540772,1863,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.5536533170284317,13082,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.5482313307130825,35620,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.7552072592287069,19397,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9694241549176152,47097,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.7700537634408602,74400,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7008577555396712,11189,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.6622516556291391,1209,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0857142857142857,139,False,42,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0261682242990654,2142,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.03862660944206,1863,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.0345460103943748,13082,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.8665918023582257,35620,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4553516188904928,19397,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9661967046033634,47097,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8848924731182796,74400,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7501786990707648,11189,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.3311258278145695,1209,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.1142857142857142,139,False,42,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+DoS,True,4089,0.0090486671557838,12264,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Exploits,True,11132,0.7913223140495868,33393,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.7349059716265259,18184,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Generic,True,18871,0.9629060463144508,40000,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Normal,True,37000,0.6354594594594595,56000,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.6716247139588101,10491,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Worms,True,44,0.0,130,False,42,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Analysis,True,677,0.0502215657311669,2000,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Backdoor,True,583,0.3224699828473413,1746,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+DoS,True,4089,0.2306187331865982,12264,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Exploits,True,11132,0.6124685591088753,33393,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.6992741669416034,18184,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Generic,True,18871,0.9623761326903716,40000,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Normal,True,37000,0.5857027027027027,56000,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8481121281464531,10491,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Shellcode,True,378,0.9232804232804231,1133,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Worms,True,44,0.5,130,False,42,multiclass,Random Forest,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Backdoor,True,583,0.0514579759862778,1746,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+DoS,True,4089,0.0339936414771337,12264,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Exploits,True,11132,0.9376572044556234,33393,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.6105245793467502,18184,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Generic,True,18871,0.9656615971596628,40000,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Normal,True,37000,0.756054054054054,56000,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8057780320366132,10491,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Shellcode,True,378,0.656084656084656,1133,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Worms,True,44,0.1590909090909091,130,False,42,multiclass,XGBoost,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0626069943751528,12264,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.7195472511678045,33393,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6445067634444078,18184,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9438821472100049,40000,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6525135135135135,56000,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.5489130434782609,10491,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,42,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0369276218611521,2000,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.2658662092624357,1746,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.2758620689655172,12264,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.6215415019762845,33393,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6649620587264929,18184,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9596205818451592,40000,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.5980540540540541,56000,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.816933638443936,10491,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.8544973544973545,1133,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.2272727272727272,130,False,42,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0325900514579759,1746,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0300807043286867,12264,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.923194394538268,33393,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5597162652589904,18184,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9519898256584176,40000,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.7558648648648648,56000,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7983409610983981,10491,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.4867724867724867,1133,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.1136363636363636,130,False,42,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0848618244069454,12264,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6581925979159181,33393,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5513032002639393,18184,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9221026972603464,40000,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.671027027027027,56000,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.4350686498855835,10491,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,42,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0221565731166912,2000,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.2024013722126929,1746,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.3377353876253363,12264,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6293568091987064,33393,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5874298911250413,18184,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9462137671559536,40000,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6354324324324324,56000,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7296910755148741,10491,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.7486772486772487,1133,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0909090909090909,130,False,42,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0274442538593482,1746,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0256786500366837,12264,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.9020840819259792,33393,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5059386341141537,18184,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9182873191669758,40000,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.7528918918918919,56000,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7748855835240275,10491,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.3492063492063492,1133,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0454545454545454,130,False,42,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0392523364485981,2142,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Backdoor,True,466,0.0085836909871244,1863,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+DoS,True,3271,0.0394374808926933,13082,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Exploits,True,8905,0.847950589556429,35620,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4188492472674778,19397,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Generic,True,11774,0.9765585187701716,47097,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Normal,True,18600,0.907043010752688,74400,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.6504646175839885,11189,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Worms,True,35,0.0,139,False,52,multiclass,Logistic Regression,Reference,UNSW-NB15
+Analysis,True,535,0.216822429906542,2142,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Backdoor,True,466,0.1652360515021459,1863,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+DoS,True,3271,0.6291653928462244,13082,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Exploits,True,8905,0.5392476137001685,35620,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Fuzzers,True,4849,0.8372860383584244,19397,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Generic,True,11774,0.9767283845761848,47097,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Normal,True,18600,0.7426881720430107,74400,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.8177269478198713,11189,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Shellcode,True,302,0.9105960264900662,1209,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Worms,True,35,0.7142857142857143,139,False,52,multiclass,Random Forest,Reference,UNSW-NB15
+Analysis,True,535,0.0560747663551401,2142,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Backdoor,True,466,0.075107296137339,1863,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+DoS,True,3271,0.0492204218893304,13082,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Exploits,True,8905,0.9228523301516002,35620,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4753557434522582,19397,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Generic,True,11774,0.980975029726516,47097,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Normal,True,18600,0.9423118279569892,74400,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.7601858470335954,11189,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Shellcode,True,302,0.6158940397350994,1209,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Worms,True,35,0.3428571428571428,139,False,52,multiclass,XGBoost,Reference,UNSW-NB15
+Analysis,True,535,0.0317757009345794,2142,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0064377682403433,1863,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0819321308468358,13082,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.7724873666479506,35620,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3833780160857908,19397,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9661117717003568,47097,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.8683333333333333,74400,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.5150107219442459,11189,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,52,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.1663551401869158,2142,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.186695278969957,1863,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.5747477835524305,13082,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.5485682201010668,35620,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.8181068261497216,19397,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.976218787158145,47097,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.7576881720430108,74400,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7948534667619729,11189,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.8509933774834437,1209,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.3142857142857143,139,False,52,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0411214953271028,2142,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0515021459227467,1863,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0339345765820849,13082,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.9117349803481192,35620,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4850484636007424,19397,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9785969084423306,47097,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.9020967741935484,74400,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7566118656182987,11189,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.5331125827814569,1209,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.2857142857142857,139,False,52,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0261682242990654,2142,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0064377682403433,1863,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.1112809538367471,13082,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.7181358787198203,35620,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3378016085790885,19397,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.948615593680992,47097,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8450537634408603,74400,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.4213724088634739,11189,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,52,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.1065420560747663,2142,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.2124463519313304,1863,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.5151329868541731,13082,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.5551937113980909,35620,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.7525262940812538,19397,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9734160013589264,47097,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.781236559139785,74400,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7197998570407433,11189,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.7417218543046358,1209,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.1714285714285714,139,False,52,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0336448598130841,2142,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0407725321888412,1863,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.0192601650871293,13082,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.8886019090398652,35620,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.5001031140441328,19397,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9691693562085952,47097,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8533870967741936,74400,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7401715511079342,11189,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.4072847682119205,1209,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.1428571428571428,139,False,52,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+DoS,True,4089,0.0090486671557838,12264,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Exploits,True,11132,0.7913223140495868,33393,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.7349059716265259,18184,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Generic,True,18871,0.9629060463144508,40000,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Normal,True,37000,0.6354594594594595,56000,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.6716247139588101,10491,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Worms,True,44,0.0,130,False,52,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Analysis,True,677,0.0192023633677991,2000,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Backdoor,True,583,0.3481989708404803,1746,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+DoS,True,4089,0.2225483003179261,12264,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Exploits,True,11132,0.6141753503413583,33393,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.70884196634774,18184,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Generic,True,18871,0.9623761326903716,40000,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Normal,True,37000,0.5876486486486486,56000,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8495423340961098,10491,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Shellcode,True,378,0.9153439153439152,1133,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Worms,True,44,0.4772727272727273,130,False,52,multiclass,Random Forest,Temporal,UNSW-NB15
+Analysis,True,677,0.0029542097488921,2000,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Backdoor,True,583,0.0548885077186964,1746,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+DoS,True,4089,0.0357055514795793,12264,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Exploits,True,11132,0.9301113905856988,33393,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.5768723193665457,18184,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Generic,True,18871,0.9653436489852154,40000,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Normal,True,37000,0.755,56000,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8123569794050344,10491,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Shellcode,True,378,0.6190476190476191,1133,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Worms,True,44,0.1590909090909091,130,False,52,multiclass,XGBoost,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0542920029347028,12264,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.7162234998203377,33393,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6393929396238865,18184,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9450479571829792,40000,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.652918918918919,56000,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.5357551487414187,10491,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,52,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0310192023633678,2000,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.2658662092624357,1746,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.2707263389581805,12264,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.6211821775062881,33393,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.674694820191356,18184,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9602034868316464,40000,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6039729729729729,56000,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7920480549199085,10491,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.8703703703703703,1133,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.25,130,False,52,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.001477104874446,2000,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0428816466552315,1746,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0298361457569087,12264,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.9195113187208048,33393,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5225998020455296,18184,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.959143659583488,40000,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.7618108108108108,56000,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7974828375286042,10491,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.5476190476190477,1133,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.1136363636363636,130,False,52,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0838835901198337,12264,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6611570247933884,33393,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5483338832068624,18184,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9244343172062952,40000,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6697027027027027,56000,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.4262013729977116,10491,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0227272727272727,130,False,52,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0162481536189069,2000,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.1955403087478559,1746,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.3233064318904378,12264,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6256737333812432,33393,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5793467502474431,18184,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9494462402628372,40000,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.646918918918919,56000,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.6956521739130435,10491,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.7619047619047619,1133,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.1363636363636363,130,False,52,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.001477104874446,2000,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0360205831903945,1746,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0242112986060161,12264,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.8994789795185052,33393,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.4604091059056417,18184,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9409676222775688,40000,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.7634324324324324,56000,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.777745995423341,10491,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.4391534391534391,1133,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0909090909090909,130,False,52,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0186915887850467,2142,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Backdoor,True,466,0.0,1863,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+DoS,True,3271,0.0409660654234179,13082,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Exploits,True,8905,0.8540145985401459,35620,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4246236337389152,19397,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Generic,True,11774,0.974689994904026,47097,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Normal,True,18600,0.9051075268817204,74400,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.6315225160829163,11189,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Shellcode,True,302,0.0033112582781456,1209,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Worms,True,35,0.0,139,False,62,multiclass,Logistic Regression,Reference,UNSW-NB15
+Analysis,True,535,0.1906542056074766,2142,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Backdoor,True,466,0.1652360515021459,1863,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+DoS,True,3271,0.6016508712931825,13082,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Exploits,True,8905,0.5381246490735542,35620,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Fuzzers,True,4849,0.8292431429160652,19397,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Generic,True,11774,0.9747749278070325,47097,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Normal,True,18600,0.7366129032258064,74400,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.8273766976411723,11189,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Shellcode,True,302,0.890728476821192,1209,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Worms,True,35,0.6,139,False,62,multiclass,Random Forest,Reference,UNSW-NB15
+Analysis,True,535,0.0373831775700934,2142,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Backdoor,True,466,0.075107296137339,1863,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+DoS,True,3271,0.0262916539284622,13082,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Exploits,True,8905,0.9356541268950028,35620,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4790678490410394,19397,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Generic,True,11774,0.9790215729573636,47097,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Normal,True,18600,0.9398387096774192,74400,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.7623302358827734,11189,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Shellcode,True,302,0.5397350993377483,1209,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Worms,True,35,0.3714285714285714,139,False,62,multiclass,XGBoost,Reference,UNSW-NB15
+Analysis,True,535,0.0186915887850467,2142,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0,1863,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0730663405686334,13082,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.7774284110050533,35620,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3714167869663848,19397,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9636487175131646,47097,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.8674731182795699,74400,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.509649749821301,11189,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.0033112582781456,1209,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,62,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.1476635514018691,2142,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.2145922746781116,1863,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.5836135738306328,13082,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.5477821448624368,35620,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.812951123943081,19397,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9742653303889928,47097,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.752258064516129,74400,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.8020014295925662,11189,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.8278145695364238,1209,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.3428571428571428,139,False,62,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0355140186915887,2142,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.055793991416309,1863,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0220116172424335,13082,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.9169006176305446,35620,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4897917096308517,19397,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.975794122643112,47097,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.903494623655914,74400,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7501786990707648,11189,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.4437086092715231,1209,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.2285714285714285,139,False,62,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0074766355140186,2142,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0021459227467811,1863,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.0807092632222561,13082,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.7239752947782145,35620,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.324396782841823,19397,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9485306607779854,47097,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8453225806451613,74400,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.397784131522516,11189,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.0033112582781456,1209,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,62,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0728971962616822,2142,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.2360515021459227,1863,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.5875878936105167,13082,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.5566535654126895,35620,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.7451020829036915,19397,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.971717343298794,47097,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.7717204301075269,74400,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7294496068620443,11189,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.7052980132450332,1209,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.2,139,False,62,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0299065420560747,2142,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0450643776824034,1863,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.020177315805564,13082,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.8970241437394723,35620,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4899979377191173,19397,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9633939188041448,47097,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8626344086021506,74400,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7208720514653324,11189,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.3576158940397351,1209,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0857142857142857,139,False,62,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+DoS,True,4089,0.0090486671557838,12264,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Exploits,True,11132,0.7913223140495868,33393,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.7349059716265259,18184,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Generic,True,18871,0.9629060463144508,40000,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Normal,True,37000,0.6354594594594595,56000,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.6716247139588101,10491,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Worms,True,44,0.0,130,False,62,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Analysis,True,677,0.0310192023633678,2000,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Backdoor,True,583,0.4408233276157804,1746,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+DoS,True,4089,0.1985815602836879,12264,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Exploits,True,11132,0.61300754581387,33393,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.6992741669416034,18184,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Generic,True,18871,0.9623761326903716,40000,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Normal,True,37000,0.5866486486486486,56000,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8489702517162472,10491,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Shellcode,True,378,0.8915343915343915,1133,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Worms,True,44,0.5,130,False,62,multiclass,Random Forest,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Backdoor,True,583,0.0548885077186964,1746,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+DoS,True,4089,0.032770848618244,12264,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Exploits,True,11132,0.9258893280632412,33393,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.5976575387660839,18184,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Generic,True,18871,0.9651846748979916,40000,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Normal,True,37000,0.757945945945946,56000,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8049199084668193,10491,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Shellcode,True,378,0.6534391534391535,1133,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Worms,True,44,0.1590909090909091,130,False,62,multiclass,XGBoost,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0621178772315969,12264,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.7148760330578512,33393,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6359287363906302,18184,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9448359917333474,40000,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6517297297297298,56000,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.5420480549199085,10491,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,62,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0206794682422452,2000,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.3190394511149228,1746,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.2633895818048422,12264,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.6205533596837944,33393,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6638073243154075,18184,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9611573313549892,40000,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6009729729729729,56000,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.8140732265446224,10491,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.843915343915344,1133,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.25,130,False,62,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0428816466552315,1746,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0273905600391293,12264,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.9192418253683076,33393,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5225998020455296,18184,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9558052037517883,40000,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.7665405405405405,56000,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7931922196796338,10491,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.5291005291005291,1133,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0909090909090909,130,False,62,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0897529958425042,12264,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.653701042040963,33393,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5435499835037941,18184,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.923904403582216,40000,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6697027027027027,56000,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.4307780320366132,10491,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,62,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.017725258493353,2000,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.2624356775300172,1746,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.3406700904866716,12264,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6257635644987424,33393,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5805014846585286,18184,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.954586402416406,40000,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6446756756756756,56000,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7285469107551488,10491,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.7433862433862434,1133,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0227272727272727,130,False,62,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0308747855917667,1746,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.020298361457569,12264,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.904599353215954,33393,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.4556252062025734,18184,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.932012082030629,40000,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.7748918918918919,56000,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7717391304347826,10491,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.4179894179894179,1133,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,62,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0336448598130841,2142,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Backdoor,True,466,0.0085836909871244,1863,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+DoS,True,3271,0.040354631611128,13082,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Exploits,True,8905,0.8595171252105559,35620,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4130748607960404,19397,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Generic,True,11774,0.9730762697469,47097,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Normal,True,18600,0.9097849462365593,74400,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.6157969978556112,11189,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Worms,True,35,0.0,139,False,72,multiclass,Logistic Regression,Reference,UNSW-NB15
+Analysis,True,535,0.2299065420560747,2142,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Backdoor,True,466,0.2145922746781116,1863,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+DoS,True,3271,0.6007337205747478,13082,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Exploits,True,8905,0.5352049410443571,35620,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Fuzzers,True,4849,0.8337801608579088,19397,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Generic,True,11774,0.9724817394258536,47097,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Normal,True,18600,0.742741935483871,74400,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.8266619013581129,11189,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Shellcode,True,302,0.8741721854304636,1209,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Worms,True,35,0.7142857142857143,139,False,72,multiclass,Random Forest,Reference,UNSW-NB15
+Analysis,True,535,0.0504672897196261,2142,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Backdoor,True,466,0.0922746781115879,1863,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+DoS,True,3271,0.057474778355243,13082,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Exploits,True,8905,0.927793374508703,35620,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4638069705093833,19397,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Generic,True,11774,0.9766434516731782,47097,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Normal,True,18600,0.94752688172043,74400,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.7616154395997141,11189,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Shellcode,True,302,0.5596026490066225,1209,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Worms,True,35,0.3714285714285714,139,False,72,multiclass,XGBoost,Reference,UNSW-NB15
+Analysis,True,535,0.022429906542056,2142,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0085836909871244,1863,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0791806786915316,13082,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.7755193711398091,35620,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3804908228500722,19397,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9579582130117208,47097,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.8730645161290322,74400,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.506433166547534,11189,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,72,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.1439252336448598,2142,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.2467811158798283,1863,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.5811678385814736,13082,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.5483436271757439,35620,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.8127448958548155,19397,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9711228129777476,47097,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.7624731182795699,74400,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7880629020729092,11189,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.7847682119205298,1209,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.4857142857142857,139,False,72,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0373831775700934,2142,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0665236051502145,1863,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0428003668602873,13082,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.9107243121841662,35620,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4677253041864302,19397,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.974435196195006,47097,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.9090860215053764,74400,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7587562544674767,11189,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.4602649006622517,1209,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.1714285714285714,139,False,72,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.022429906542056,2142,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0064377682403433,1863,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.1030265973708346,13082,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.7098259404828748,35620,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3349144153433697,19397,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9410565653134024,47097,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8482795698924731,74400,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.3909935668334525,11189,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,72,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0841121495327102,2142,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.2210300429184549,1863,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.5588505044328952,13082,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.5574396406513195,35620,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.7448958548154259,19397,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9650925768642772,47097,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.7886559139784947,74400,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7058613295210865,11189,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.6788079470198676,1209,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.1714285714285714,139,False,72,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0317757009345794,2142,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0472103004291845,1863,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.0348517273005197,13082,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.881414935429534,35620,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4617446896267271,19397,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9631391200951248,47097,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8633333333333333,74400,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7426733380986419,11189,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.3509933774834437,1209,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0571428571428571,139,False,72,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+DoS,True,4089,0.0090486671557838,12264,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Exploits,True,11132,0.7913223140495868,33393,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.7349059716265259,18184,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Generic,True,18871,0.9629060463144508,40000,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Normal,True,37000,0.6354594594594595,56000,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.6716247139588101,10491,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Worms,True,44,0.0,130,False,72,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Analysis,True,677,0.0369276218611521,2000,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Backdoor,True,583,0.3773584905660377,1746,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+DoS,True,4089,0.2046955245781364,12264,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Exploits,True,11132,0.6137261947538627,33393,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.7057076872319367,18184,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Generic,True,18871,0.962694080864819,40000,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Normal,True,37000,0.5880540540540541,56000,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8498283752860412,10491,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Shellcode,True,378,0.91005291005291,1133,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Worms,True,44,0.5227272727272727,130,False,72,multiclass,Random Forest,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Backdoor,True,583,0.0686106346483705,1746,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+DoS,True,4089,0.0344827586206896,12264,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Exploits,True,11132,0.9298418972332017,33393,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.6035961728802376,18184,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Generic,True,18871,0.9652906576228076,40000,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Normal,True,37000,0.7578378378378379,56000,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8146453089244852,10491,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Shellcode,True,378,0.6587301587301587,1133,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Worms,True,44,0.1363636363636363,130,False,72,multiclass,XGBoost,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0621178772315969,12264,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.7165828242903342,33393,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6446717255031342,18184,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9455778708070584,40000,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6507027027027027,56000,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.5429061784897025,10491,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,72,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0310192023633678,2000,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.3018867924528302,1746,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.2528735632183908,12264,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.6227093065037729,33393,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6659518310788519,18184,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9613163054422128,40000,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.5997837837837838,56000,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.8009153318077803,10491,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.8597883597883598,1133,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.25,130,False,72,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0497427101200686,1746,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0310589386157984,12264,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.9182536830758176,33393,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5255691191026064,18184,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9566000741879074,40000,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.7624594594594595,56000,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.8000572082379863,10491,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.5529100529100529,1133,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0454545454545454,130,False,72,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0946441672780631,12264,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6573841178584262,33393,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5483338832068624,18184,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9258120926289016,40000,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6693243243243243,56000,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.4304919908466819,10491,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0227272727272727,130,False,72,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0265878877400295,2000,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.2332761578044597,1746,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.3318659819026657,12264,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6228889687387711,33393,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5811613328934345,18184,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9538975147051032,40000,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6402162162162162,56000,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.717391304347826,10491,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.8095238095238095,1133,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0681818181818181,130,False,72,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0377358490566037,1746,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0229885057471264,12264,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.9018145885734818,33393,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.4594193335532827,18184,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9306343066080228,40000,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.7563513513513513,56000,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7846109839816934,10491,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.4232804232804232,1133,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,72,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0242990654205607,2142,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Backdoor,True,466,0.0,1863,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+DoS,True,3271,0.0287373891776215,13082,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Exploits,True,8905,0.8500842223469961,35620,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4396782841823056,19397,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Generic,True,11774,0.9754543910310854,47097,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Normal,True,18600,0.9077956989247312,74400,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.647962830593281,11189,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Worms,True,35,0.0,139,False,82,multiclass,Logistic Regression,Reference,UNSW-NB15
+Analysis,True,535,0.2299065420560747,2142,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Backdoor,True,466,0.1738197424892703,1863,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+DoS,True,3271,0.616936716600428,13082,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Exploits,True,8905,0.5419427288040427,35620,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Fuzzers,True,4849,0.8315116518869871,19397,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Generic,True,11774,0.9754543910310854,47097,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Normal,True,18600,0.7430107526881721,74400,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.8220157255182273,11189,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Shellcode,True,302,0.8940397350993378,1209,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Worms,True,35,0.6857142857142857,139,False,82,multiclass,Random Forest,Reference,UNSW-NB15
+Analysis,True,535,0.0467289719626168,2142,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Backdoor,True,466,0.0793991416309012,1863,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+DoS,True,3271,0.0458575359217364,13082,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Exploits,True,8905,0.9247613700168444,35620,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Fuzzers,True,4849,0.4976283769849453,19397,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Generic,True,11774,0.9795311703754034,47097,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Normal,True,18600,0.9429032258064516,74400,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Reconnaissance,True,2798,0.7601858470335954,11189,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Shellcode,True,302,0.6026490066225165,1209,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Worms,True,35,0.3714285714285714,139,False,82,multiclass,XGBoost,Reference,UNSW-NB15
+Analysis,True,535,0.016822429906542,2142,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0021459227467811,1863,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0758177927239376,13082,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.7609208309938237,35620,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3932769643225407,19397,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.963308985901138,47097,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.8767204301075269,74400,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.5243030736240172,11189,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,82,multiclass,Logistic Regression,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.1738317757009345,2142,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.1931330472103004,1863,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.5585447875267502,13082,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.5557551937113981,35620,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.812951123943081,19397,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9740105316799728,47097,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.7587096774193548,74400,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7930664760543246,11189,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.8278145695364238,1209,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.2857142857142857,139,False,82,multiclass,Random Forest,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0429906542056074,2142,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Backdoor,True,466,0.0622317596566523,1863,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+DoS,True,3271,0.0321002751452155,13082,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Exploits,True,8905,0.9128579449747332,35620,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4850484636007424,19397,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Generic,True,11774,0.9763886529641584,47097,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Normal,True,18600,0.9232258064516128,74400,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7494639027877055,11189,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Shellcode,True,302,0.4933774834437086,1209,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Worms,True,35,0.2285714285714285,139,False,82,multiclass,XGBoost,Reference+10% Missingness,UNSW-NB15
+Analysis,True,535,0.0130841121495327,2142,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0,1863,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.1011922959339651,13082,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.7054463784390792,35620,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.3477005568158383,19397,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9442840156276542,47097,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8513440860215054,74400,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.4160114367405289,11189,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.0,1209,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0,139,False,82,multiclass,Logistic Regression,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.1009345794392523,2142,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.203862660944206,1863,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.5264445123815347,13082,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.5646266142616507,35620,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.7531449783460508,19397,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.9685748258875488,47097,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.7777419354838709,74400,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7219442458899213,11189,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.7119205298013245,1209,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0857142857142857,139,False,82,multiclass,Random Forest,Reference+20% Missingness,UNSW-NB15
+Analysis,True,535,0.0242990654205607,2142,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Backdoor,True,466,0.0579399141630901,1863,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+DoS,True,3271,0.0238459186793029,13082,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Exploits,True,8905,0.8889387984278495,35620,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Fuzzers,True,4849,0.4685502165394927,19397,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Generic,True,11774,0.964667912349244,47097,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Normal,True,18600,0.8915591397849463,74400,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Reconnaissance,True,2798,0.7323087919942817,11189,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Shellcode,True,302,0.4205298013245033,1209,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Worms,True,35,0.0857142857142857,139,False,82,multiclass,XGBoost,Reference+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+DoS,True,4089,0.0090486671557838,12264,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Exploits,True,11132,0.7913223140495868,33393,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.7349059716265259,18184,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Generic,True,18871,0.9629060463144508,40000,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Normal,True,37000,0.6354594594594595,56000,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.6716247139588101,10491,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Worms,True,44,0.0,130,False,82,multiclass,Logistic Regression,Temporal,UNSW-NB15
+Analysis,True,677,0.0295420974889217,2000,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Backdoor,True,583,0.3036020583190394,1746,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+DoS,True,4089,0.2345316703350452,12264,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Exploits,True,11132,0.6107617678763924,33393,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.6933355328274496,18184,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Generic,True,18871,0.9621641672407396,40000,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Normal,True,37000,0.5858378378378378,56000,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.847254004576659,10491,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Shellcode,True,378,0.9126984126984128,1133,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Worms,True,44,0.5681818181818182,130,False,82,multiclass,Random Forest,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Backdoor,True,583,0.0651801029159519,1746,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+DoS,True,4089,0.032770848618244,12264,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Exploits,True,11132,0.9219367588932806,33393,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Fuzzers,True,6062,0.6225668096337842,18184,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Generic,True,18871,0.9655556144348472,40000,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Normal,True,37000,0.7510270270270271,56000,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Reconnaissance,True,3496,0.8126430205949656,10491,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Shellcode,True,378,0.6640211640211641,1133,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Worms,True,44,0.2045454545454545,130,False,82,multiclass,XGBoost,Temporal,UNSW-NB15
+Analysis,True,677,0.0,2000,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0562484715089263,12264,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.719098095580309,33393,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6382382052128011,18184,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9456308621694663,40000,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6538108108108108,56000,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.5380434782608695,10491,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0,130,False,82,multiclass,Logistic Regression,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0192023633677991,2000,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.2384219554030874,1746,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.2907801418439716,12264,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.6218109953287819,33393,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.6680963378422963,18184,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.9602564781940544,40000,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.6003783783783784,56000,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.8077803203661327,10491,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.8359788359788359,1133,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.1363636363636363,130,False,82,multiclass,Random Forest,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.0,2000,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Backdoor,True,583,0.0514579759862778,1746,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+DoS,True,4089,0.0291024700415749,12264,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Exploits,True,11132,0.913402802730866,33393,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5587264929066315,18184,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Generic,True,18871,0.958931694133856,40000,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Normal,True,37000,0.7588648648648648,56000,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.8012013729977117,10491,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Shellcode,True,378,0.5608465608465608,1133,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Worms,True,44,0.0454545454545454,130,False,82,multiclass,XGBoost,Temporal+10% Missingness,UNSW-NB15
+Analysis,True,677,0.001477104874446,2000,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0,1746,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.0902421129860601,12264,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6605282069708948,33393,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5430550973276147,18184,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9236924381325844,40000,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6724594594594595,56000,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.4302059496567506,10491,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.0,1133,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0227272727272727,130,False,82,multiclass,Logistic Regression,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0147710487444608,2000,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.1663807890222984,1746,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.3489850819271215,12264,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.6242364355012576,33393,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.5847904981854174,18184,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9526257220073128,40000,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.6438648648648648,56000,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.7105263157894737,10491,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.7328042328042328,1133,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0681818181818181,130,False,82,multiclass,Random Forest,Temporal+20% Missingness,UNSW-NB15
+Analysis,True,677,0.0044313146233382,2000,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Backdoor,True,583,0.0360205831903945,1746,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+DoS,True,4089,0.024455857177794,12264,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Exploits,True,11132,0.8933704635285663,33393,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Fuzzers,True,6062,0.486638073243154,18184,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Generic,True,18871,0.9384240368819884,40000,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Normal,True,37000,0.7591081081081081,56000,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Reconnaissance,True,3496,0.778604118993135,10491,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Shellcode,True,378,0.4312169312169312,1133,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15
+Worms,True,44,0.0454545454545454,130,False,82,multiclass,XGBoost,Temporal+20% Missingness,UNSW-NB15

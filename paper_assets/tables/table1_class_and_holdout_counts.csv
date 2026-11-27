@@ -1,0 +1,38 @@
+Class,Train,Test,Dataset,Fit cap in coverage,Holdout,Test only,Zero test support,Predictor count,Total in holdout split,Duplicates excluded in core experiment,Exact overlap test rows
+BENIGN,1223597,271498,CICIDS2017,False,Capture-day chronological holdout,False,False,82,1786609,313362,
+Botnet,0,736,CICIDS2017,False,Capture-day chronological holdout,True,False,82,1786609,313362,
+Botnet - Attempted,0,1198,CICIDS2017,False,Capture-day chronological holdout,True,False,82,1786609,313362,
+DDoS,0,95144,CICIDS2017,False,Capture-day chronological holdout,True,False,82,1786609,313362,
+DoS GoldenEye,7567,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS GoldenEye - Attempted,80,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS Hulk,158468,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS Hulk - Attempted,580,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS Slowhttptest,1740,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS Slowhttptest - Attempted,3368,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS Slowloris,3859,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+DoS Slowloris - Attempted,1844,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+FTP-Patator,3972,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+FTP-Patator - Attempted,12,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Heartbleed,11,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Infiltration,36,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Infiltration - Attempted,45,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Infiltration - Portscan,6127,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Portscan,0,1683,CICIDS2017,False,Capture-day chronological holdout,True,False,82,1786609,313362,
+SSH-Patator,2961,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+SSH-Patator - Attempted,27,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Web Attack - Brute Force,73,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Web Attack - Brute Force - Attempted,1292,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Web Attack - SQL Injection,13,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Web Attack - SQL Injection - Attempted,5,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Web Attack - XSS,18,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Web Attack - XSS - Attempted,655,0,CICIDS2017,False,Capture-day chronological holdout,False,True,82,1786609,313362,
+Analysis,2000,677,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Backdoor,1746,583,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+DoS,12264,4089,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Exploits,33393,11132,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Fuzzers,18184,6062,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Generic,40000,18871,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Normal,56000,37000,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Reconnaissance,10491,3496,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Shellcode,1133,378,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0
+Worms,130,44,UNSW-NB15,False,Official Train/Test Holdout,False,False,42,257673,0,4247.0

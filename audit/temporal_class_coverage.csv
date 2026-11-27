@@ -1,0 +1,28 @@
+Class,Train,Test
+BENIGN,1223597,271498
+Botnet,0,736
+Botnet - Attempted,0,1198
+DDoS,0,95144
+DoS GoldenEye,7567,0
+DoS GoldenEye - Attempted,80,0
+DoS Hulk,158468,0
+DoS Hulk - Attempted,580,0
+DoS Slowhttptest,1740,0
+DoS Slowhttptest - Attempted,3368,0
+DoS Slowloris,3859,0
+DoS Slowloris - Attempted,1844,0
+FTP-Patator,3972,0
+FTP-Patator - Attempted,12,0
+Heartbleed,11,0
+Infiltration,36,0
+Infiltration - Attempted,45,0
+Infiltration - Portscan,6127,0
+Portscan,0,1683
+SSH-Patator,2961,0
+SSH-Patator - Attempted,27,0
+Web Attack - Brute Force,73,0
+Web Attack - Brute Force - Attempted,1292,0
+Web Attack - SQL Injection,13,0
+Web Attack - SQL Injection - Attempted,5,0
+Web Attack - XSS,18,0
+Web Attack - XSS - Attempted,655,0

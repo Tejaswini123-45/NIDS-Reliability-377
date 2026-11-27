@@ -5,8 +5,8 @@
 Cross-Dataset Analysis Module
 
 Synthesizes experimental results from:
-1. Part A: CICIDS2017 Reliability Evaluation (Checkpoint 2fe4892)
-2. Part B: UNSW-NB15 Reliability Evaluation
+1. CICIDS2017 capture-day chronological holdout
+2. UNSW-NB15 Official Train/Test Holdout
 
 Generates:
 - Comparative metrics table (Reference, Temporal, Missingness, Combined)
@@ -26,6 +26,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from src.evidence import METRICS
+from verify_run import verify
+
 # Ensure clean UTF-8 console output
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -34,10 +37,33 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
-RESULTS_DIR = ROOT_DIR / "results"
-UNSW_DIR = RESULTS_DIR / "unsw_nb15"
-CROSS_DIR = RESULTS_DIR / "cross_dataset"
+RESULTS_DIR = Path(os.environ.get("NIDS_OUTPUT_ROOT", ROOT_DIR / "verified_runs"))
+CROSS_DIR = RESULTS_DIR / ("cross_dataset_partial" if PARTIAL_COMPARISON else "cross_dataset")
+directories, verified = {}, {}
+for dataset in ("cicids2017", "unsw_nb15"):
+    directory = RESULTS_DIR / dataset
+    if FALLBACK_ROOT and not (directory / "prediction_validation.json").exists():
+        directory = FALLBACK_ROOT / dataset
+    record = verify(directory)
+    if not PARTIAL_COMPARISON and not record["paper_mode"]:
+        raise ValueError(f"{dataset} needs a completed five-seed prediction audit")
+    directories[dataset], verified[dataset] = directory, record
+shared_seeds = sorted(set.intersection(*(set(record["seeds"]) for record in verified.values())))
+if not shared_seeds:
+    raise ValueError("The benchmark runs have no common seeds")
+title_suffix = f" · Preliminary, seed(s) {', '.join(map(str, shared_seeds))}" if PARTIAL_COMPARISON else ""
+mode_labels = {
+    dataset: "full partition" if record["paper_mode"] else "capped training"
+    for dataset, record in verified.items()
+}
 CROSS_DIR.mkdir(parents=True, exist_ok=True)
+(CROSS_DIR / "comparison_metadata.json").write_text(json.dumps({
+    "paper_mode": not PARTIAL_COMPARISON,
+    "shared_seeds": shared_seeds,
+    "inputs": {dataset: {"source": str(directories[dataset]), "paper_mode": record["paper_mode"],
+                         "holdout": record["holdout"]} for dataset, record in verified.items()},
+    "scope": "Descriptive within-dataset changes. The two label universes, features and partitions differ.",
+}, indent=2), encoding="utf-8")
 
 print("=" * 80)
 print("CROSS-DATASET RELIABILITY EVALUATION: CICIDS2017 vs. UNSW-NB15")
@@ -46,64 +72,19 @@ print("=" * 80)
 # ============================================================================
 # 1. LOAD UNSW-NB15 RESULTS (PART B)
 # ============================================================================
-unsw_summary_file = UNSW_DIR / "repeated_seed_summary.csv"
-unsw_metrics_file = UNSW_DIR / "final_condition_metrics.csv"
-unsw_degradation_file = UNSW_DIR / "degradation_macro_f1.csv"
-unsw_interaction_file = UNSW_DIR / "interaction_results.csv"
-
-if not unsw_metrics_file.exists():
-    raise FileNotFoundError(f"UNSW-NB15 metrics file not found: {unsw_metrics_file}. Run run_unsw_experiments.py first.")
-
-df_unsw_metrics = pd.read_csv(unsw_metrics_file)
-df_unsw_degradation = pd.read_csv(unsw_degradation_file) if unsw_degradation_file.exists() else pd.DataFrame()
-df_unsw_interaction = pd.read_csv(unsw_interaction_file) if unsw_interaction_file.exists() else pd.DataFrame()
-df_unsw_summary = pd.read_csv(unsw_summary_file) if unsw_summary_file.exists() else pd.DataFrame()
-
-# Standardize column naming in UNSW metrics
-unsw_col_map = {
-    "Macro F1": "Macro_F1",
-    "Macro Recall": "Macro_Recall",
-    "Macro Precision": "Macro_Precision",
-    "Weighted F1": "Weighted_F1"
-}
-df_unsw_metrics = df_unsw_metrics.rename(columns=unsw_col_map)
-
-# ============================================================================
-# 2. LOAD CICIDS2017 VALIDATED RESULTS (PART A - CHECKPOINT 2fe4892)
-# ============================================================================
-CICIDS_DIR = RESULTS_DIR / "cicids2017"
-if not (CICIDS_DIR / "final_condition_metrics.csv").exists():
-    # Fallback to root results directory if populated there
-    CICIDS_DIR = RESULTS_DIR
-
-cicids_metrics_file = CICIDS_DIR / "final_condition_metrics.csv"
-cicids_degradation_file = CICIDS_DIR / "degradation_macro_f1.csv"
-cicids_interaction_file = CICIDS_DIR / "interaction_results.csv"
-cicids_summary_file = CICIDS_DIR / "repeated_seed_summary.csv"
-
-if not cicids_metrics_file.exists():
-    raise FileNotFoundError(
-        f"CICIDS2017 Part A metrics file not found at {cicids_metrics_file}. "
-        "Preserve completed CICIDS2017 baseline outputs in results/cicids2017/."
-    )
-
-print(f"Loading data-driven CICIDS2017 Part A metrics from: {cicids_metrics_file}")
-df_cicids_metrics = pd.read_csv(cicids_metrics_file)
-cicids_col_map = {
-    "Macro F1": "Macro_F1",
-    "Macro Recall": "Macro_Recall",
-    "Macro Precision": "Macro_Precision",
-    "Weighted F1": "Weighted_F1"
-}
-for old_c, new_c in cicids_col_map.items():
-    if old_c in df_cicids_metrics.columns:
-        if new_c in df_cicids_metrics.columns:
-            df_cicids_metrics = df_cicids_metrics.drop(columns=[old_c])
-        else:
-            df_cicids_metrics = df_cicids_metrics.rename(columns={old_c: new_c})
-df_cicids_metrics = df_cicids_metrics.loc[:, ~df_cicids_metrics.columns.duplicated()]
+CICIDS_DIR = directories["cicids2017"]
+UNSW_DIR = directories["unsw_nb15"]
 
 
+def verified_condition_means(directory):
+    runs = pd.read_csv(directory / "verified_seed_metrics.csv")
+    runs = runs[runs["Seed"].isin(shared_seeds)]
+    means = runs.groupby(["Task", "Model", "Condition"], as_index=False)[METRICS].mean()
+    return means.rename(columns=lambda name: name.replace(" ", "_"))
+
+
+df_unsw_metrics = verified_condition_means(UNSW_DIR)
+df_cicids_metrics = verified_condition_means(CICIDS_DIR)
 
 # ============================================================================
 # 3. COMPUTE DEGRADATION AND INTERACTION FOR BOTH DATASETS
@@ -176,51 +157,20 @@ df_comparison_interaction = pd.concat([df_cicids_int_tagged, df_unsw_int_calc], 
 df_comparison_interaction.to_csv(CROSS_DIR / "comparison_interaction.csv", index=False)
 
 # Table 4: Structural & Class Dynamics Breakdown
-structural_summary = [
-    {
-        "Dimension": "Total Evaluated Rows",
-        "CICIDS2017": "2,089,924 (5 daily CSV captures)",
-        "UNSW-NB15": "257,673 (175k train / 82k test)",
-        "Scientific Significance": "Both represent large-scale synthetic intrusion benchmarks; CICIDS2017 has 8x row volume."
-    },
-    {
-        "Dimension": "Retained Feature Count",
-        "CICIDS2017": "87 numeric features",
-        "UNSW-NB15": "42 features (39 numeric + 3 categorical)",
-        "Scientific Significance": "UNSW-NB15 incorporates connection state and protocol categories requiring one-hot encoding."
-    },
-    {
-        "Dimension": "Target Classes (Multiclass)",
-        "CICIDS2017": "27 classes (BENIGN + 26 attacks)",
-        "UNSW-NB15": "10 classes (Normal + 9 attacks)",
-        "Scientific Significance": "CICIDS2017 has severe extreme minority attacks; UNSW-NB15 attacks have higher individual support."
-    },
-    {
-        "Dimension": "Temporal Provenance Mode",
-        "CICIDS2017": "Capture-day rank (Mon-Thu vs Fri)",
-        "UNSW-NB15": "ACCS session partition (Session 0 vs 1)",
-        "Scientific Significance": "Neither uses flow duration as fake timestamp; both respect genuine capture boundaries."
-    },
-    {
-        "Dimension": "Temporal Class Dynamics",
-        "CICIDS2017": "22 attack classes absent from Friday; 4 unseen",
-        "UNSW-NB15": "All 10 classes present in both partitions",
-        "Scientific Significance": "CICIDS2017 temporal degradation is structural ceiling (~0.037); UNSW-NB15 is genuine feature drift."
-    },
-    {
-        "Dimension": "Interaction Profile (Multiclass)",
-        "CICIDS2017": "Sub-additive saturation (-0.043 to -0.100)",
-        "UNSW-NB15": "Continuous non-floor interaction",
-        "Scientific Significance": "Extreme primary degradation in CICIDS2017 leaves little room for additive missingness damage."
-    },
-    {
-        "Dimension": "Model Robustness Hierarchy",
-        "CICIDS2017": "Macro-F1: RF (0.93) > XGB (0.91) >> LR (0.68); Accuracy: RF (~0.997) > XGB (~0.996) > LR (~0.972)",
-        "UNSW-NB15": "Macro-F1: RF (0.55) > XGB (0.54) >> LR (0.38); Accuracy: XGB (0.82) > LR (0.77) > RF (0.75)",
-        "Scientific Significance": "Metric-dependent divergence: RF optimizes minority-class recall via balanced weighting, while XGBoost maximizes majority-class accuracy and achieves lowest FPR."
+def coverage_summary(directory, title):
+    coverage = pd.read_csv(directory / "coverage_42_Temporal.csv")
+    validation = json.loads((directory / "prediction_validation.json").read_text())
+    return {
+        "Dataset": title, "Holdout": validation["holdout"],
+        "Train rows": int(coverage["Train"].sum()), "Test rows": int(coverage["Test"].sum()),
+        "Feature count": len(validation["predictors"]), "Class count": len(coverage),
+        "Test-only classes": ", ".join(coverage.loc[coverage["Train"].eq(0) & coverage["Test"].gt(0), "Class"]),
+        "Classes with zero test support": ", ".join(coverage.loc[coverage["Test"].eq(0), "Class"]),
     }
-]
-df_structural = pd.DataFrame(structural_summary)
+
+df_structural = pd.DataFrame([
+    coverage_summary(CICIDS_DIR, "CICIDS2017"), coverage_summary(UNSW_DIR, "UNSW-NB15"),
+])
 df_structural.to_csv(CROSS_DIR / "comparison_class_dynamics.csv", index=False)
 
 print("\nCross-dataset comparison tables generated:")
@@ -254,9 +204,9 @@ for _, r in u_chk.iterrows():
     assert np.isclose(r["Macro_F1"], orig["Macro_F1"], atol=1e-4), f"UNSW Macro_F1 mismatch at {r['Task']}/{r['Model']}/{r['Condition']}"
     assert np.isclose(r["Accuracy"], orig["Accuracy"], atol=1e-4), f"UNSW Accuracy mismatch at {r['Task']}/{r['Model']}/{r['Condition']}"
 
-print("  [PASS] CICIDS2017 metrics verified against results/cicids2017/final_condition_metrics.csv")
-print("  [PASS] UNSW-NB15 metrics verified against results/unsw_nb15/final_condition_metrics.csv")
-print("  [PASS] Degradation and interaction tables mathematically verified against source inputs.")
+print("  [PASS] CICIDS2017 metrics verified against prediction-audited seed metrics")
+print("  [PASS] UNSW-NB15 metrics verified against prediction-audited seed metrics")
+print("Degradation and interaction tables generated from the audited run summaries.")
 
 # ============================================================================
 # 5. PUBLICATION COMPARISON FIGURES
@@ -274,16 +224,14 @@ for m in models:
     sub = df_cicids_metrics[(df_cicids_metrics["Task"] == "multiclass") & (df_cicids_metrics["Model"] == m)]
     ref_val = sub[sub["Condition"] == "Reference"]["Macro_F1"].values[0]
     temp_val = sub[sub["Condition"] == "Temporal"]["Macro_F1"].values[0]
-    ax_a.plot(["Reference", "Temporal"], [ref_val, temp_val], marker="o", linewidth=2.5, markersize=8, color=colors[m], label=m)
+    ax_a.plot(["Reference", "Capture-day holdout"], [ref_val, temp_val], marker="o", linewidth=2.5, markersize=8, color=colors[m], label=m)
 
-ax_a.set_title("A. CICIDS2017: Macro-F1 (Structural Class Shift)", fontsize=11, fontweight="bold")
+ax_a.set_title(f"A. CICIDS2017 · {mode_labels['cicids2017']}", fontsize=11, fontweight="bold")
 ax_a.set_ylabel("Macro-F1", fontsize=11)
 ax_a.grid(alpha=0.25)
 ax_a.legend(loc="upper right")
 ax_a.set_ylim(-0.05, 1.05)
-ax_a.annotate("Structural Floor (~0.037)\n(22 absent, 4 unseen classes)", xy=(1, 0.05), xytext=(0.4, 0.20),
-            arrowprops=dict(facecolor='red', shrink=0.08, width=1.5, headwidth=6),
-            fontsize=9, color="#b91c1c", bbox=dict(boxstyle="round,pad=0.3", fc="#fee2e2", ec="#b91c1c"))
+
 
 # Subplot B: UNSW-NB15
 ax_b = axes[1]
@@ -291,18 +239,16 @@ for m in models:
     sub = df_unsw_metrics[(df_unsw_metrics["Task"] == "multiclass") & (df_unsw_metrics["Model"] == m)]
     ref_val = sub[sub["Condition"] == "Reference"]["Macro_F1"].values[0]
     temp_val = sub[sub["Condition"] == "Temporal"]["Macro_F1"].values[0]
-    ax_b.plot(["Reference", "Temporal"], [ref_val, temp_val], marker="s", linewidth=2.5, markersize=8, color=colors[m], label=m)
+    ax_b.plot(["Reference", "Official train/test holdout"], [ref_val, temp_val], marker="s", linewidth=2.5, markersize=8, color=colors[m], label=m)
 
-ax_b.set_title("B. UNSW-NB15: Macro-F1 (Continuous Class Support)", fontsize=11, fontweight="bold")
+ax_b.set_title(f"B. UNSW-NB15 · {mode_labels['unsw_nb15']}", fontsize=11, fontweight="bold")
 ax_b.grid(alpha=0.25)
 ax_b.legend(loc="upper right")
-ax_b.annotate("Continuous Feature Drift\n(All 10 classes present in test)", xy=(1, 0.50), xytext=(0.35, 0.25),
-            arrowprops=dict(facecolor='blue', shrink=0.08, width=1.5, headwidth=6),
-            fontsize=9, color="#1d4ed8", bbox=dict(boxstyle="round,pad=0.3", fc="#dbeafe", ec="#1d4ed8"))
 
-fig.suptitle("Cross-Dataset Evaluation: Reference vs. Chronological Macro-F1", fontsize=13, fontweight="bold", y=1.02)
+
+fig.suptitle("Reference vs. Holdout Macro-F1" + title_suffix, fontsize=13, fontweight="bold", y=1.02)
 fig.tight_layout()
-fig.savefig(CROSS_DIR / "figure_cross_1_reference_vs_temporal.png", dpi=200, bbox_inches="tight")
+fig.savefig(CROSS_DIR / "figure_cross_1_reference_vs_temporal.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 
 # Figure Cross-2: Degradation Comparison across all 6 conditions
@@ -310,7 +256,7 @@ conditions = [
     "Reference", "Reference+10% Missingness", "Reference+20% Missingness",
     "Temporal", "Temporal+10% Missingness", "Temporal+20% Missingness"
 ]
-cond_labels = ["Ref", "Ref+10%M", "Ref+20%M", "Temp", "Temp+10%M", "Temp+20%M"]
+cond_labels = ["Ref", "Ref+10%M", "Ref+20%M", "Holdout", "Holdout+10%M", "Holdout+20%M"]
 
 fig, axes = plt.subplots(1, 2, figsize=(15, 5.5), sharey=True)
 
@@ -319,7 +265,7 @@ ax_a = axes[0]
 for m in models:
     sub = df_cicids_deg[(df_cicids_deg["Task"] == "multiclass") & (df_cicids_deg["Model"] == m)]
     deg_map = dict(zip(sub["Condition"], sub["Degradation"]))
-    vals = [deg_map.get(c, 0.0) for c in conditions]
+    vals = [deg_map[c] for c in conditions]
     ax_a.plot(cond_labels, vals, marker="o", linewidth=2, color=colors[m], label=m)
 
 ax_a.set_title("A. CICIDS2017: Relative Macro-F1 Degradation", fontsize=11, fontweight="bold")
@@ -333,16 +279,16 @@ ax_b = axes[1]
 for m in models:
     sub = df_unsw_deg_calc[(df_unsw_deg_calc["Task"] == "multiclass") & (df_unsw_deg_calc["Model"] == m)]
     deg_map = dict(zip(sub["Condition"], sub["Degradation"]))
-    vals = [deg_map.get(c, 0.0) for c in conditions]
+    vals = [deg_map[c] for c in conditions]
     ax_b.plot(cond_labels, vals, marker="s", linewidth=2, color=colors[m], label=m)
 
 ax_b.set_title("B. UNSW-NB15: Relative Macro-F1 Degradation", fontsize=11, fontweight="bold")
 ax_b.grid(alpha=0.25)
 ax_b.legend()
 
-fig.suptitle("Cross-Dataset Evaluation: Relative Performance Degradation Across 6 Conditions", fontsize=13, fontweight="bold", y=1.02)
+fig.suptitle("Within-dataset relative degradation" + title_suffix, fontsize=13, fontweight="bold", y=1.02)
 fig.tight_layout()
-fig.savefig(CROSS_DIR / "figure_cross_2_degradation_comparison.png", dpi=200, bbox_inches="tight")
+fig.savefig(CROSS_DIR / "figure_cross_2_degradation_comparison.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 
 # Figure Cross-3: Interaction Effect Comparison
@@ -367,11 +313,11 @@ ax.axhline(0, color="black", linestyle="--", linewidth=1)
 ax.set_xticks(x)
 ax.set_xticklabels(models, fontsize=10, fontweight="bold")
 ax.set_ylabel("Non-Additive Interaction: D_comb - (D_temp + D_miss)", fontsize=10)
-ax.set_title("Cross-Dataset Combined Stress Interaction: Sub-Additive vs. Continuous Dynamics", fontsize=11, fontweight="bold")
+ax.set_title("Descriptive combined-stress interaction" + title_suffix, fontsize=11, fontweight="bold")
 ax.grid(axis="y", alpha=0.25)
 ax.legend(fontsize=9)
 fig.tight_layout()
-fig.savefig(CROSS_DIR / "figure_cross_3_stress_interaction.png", dpi=200, bbox_inches="tight")
+fig.savefig(CROSS_DIR / "figure_cross_3_stress_interaction.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 
 # Figure Cross-4: Architecture Ranking Across Stress Conditions
@@ -390,11 +336,11 @@ ax.bar(x + w, xgb_unsw, w, label="XGBoost", color="#8b5cf6", alpha=0.85)
 ax.set_xticks(x)
 ax.set_xticklabels(cond_labels, fontsize=10)
 ax.set_ylabel("Macro-F1 Score", fontsize=10)
-ax.set_title("UNSW-NB15: Model Architecture Comparison Under All 6 Stress Conditions", fontsize=11, fontweight="bold")
+ax.set_title("UNSW-NB15 macro F1 by model and condition" + title_suffix, fontsize=11, fontweight="bold")
 ax.grid(axis="y", alpha=0.25)
 ax.legend(fontsize=9)
 fig.tight_layout()
-fig.savefig(CROSS_DIR / "figure_cross_4_model_resilience_ranking.png", dpi=200, bbox_inches="tight")
+fig.savefig(CROSS_DIR / "figure_cross_4_model_resilience_ranking.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 
 print("Cross-dataset figures generated successfully:")

@@ -1,122 +1,83 @@
-# NIDS Reliability Evaluation Framework
-## Evaluating ML-Based Network Intrusion Detection Systems Under Temporal Shift and Controlled Stress Conditions
+# NIDS Reliability · ICISAS 2026 paper 377
 
-This repository contains a reproducible research framework evaluating the reliability of machine learning-based Network Intrusion Detection Systems (NIDS) when subjected to chronological holdout shift, test-time feature missingness, and combined stress conditions.
+This project evaluates Logistic Regression, Random Forest and XGBoost on
+CICIDS2017 and UNSW-NB15. It reports binary and multiclass results separately.
+The checked-in historical `results/` and `conference_paper_assets/` are legacy
+material. Use the new prediction-audited output directories for revision evidence.
 
-The evaluation covers two premier intrusion detection benchmarks:
-1. **CICIDS2017 (Part A - Checkpoint `2fe4892`):** Captures multi-day enterprise network attacks across 27 classes, evaluating structural class shifts under capture-day provenance (Monday–Thursday train vs. Friday test).
-2. **UNSW-NB15 (Part B):** Evaluates contemporary network attacks across 10 classes under continuous class support using discrete capture session provenance.
-3. **Cross-Dataset Synthesis:** Comparative evaluation disentangling structural class-absence failure from continuous feature drift, evaluating model resilience hierarchies, and analyzing non-additive combined stress interactions.
+## Set up and acquire the data
 
----
+Use Python 3.12 and install `requirements.txt`. The full CICIDS2017 run can take
+substantial RAM and CPU time. Use a dedicated host with ample free memory and
+disk for roughly 860 MB of source CSVs, prediction artifacts and the package.
 
-## 1. Research Protocol & Experimental Scope
-
-- **Datasets:**
-  - `CICIDS2017`: 2,089,924 records across 87 retained numeric features; 27 multiclass targets.
-  - `UNSW-NB15`: 257,673 records across 42 retained features (39 numeric + 3 categorical); 10 multiclass targets.
-- **Model Architectures:**
-  - Logistic Regression (L-BFGS solver, `tol=1e-3`, `max_iter=300`, training `StandardScaler`).
-  - Random Forest (`n_estimators=65`, `max_depth=18`, `class_weight="balanced_subsample"`).
-  - XGBoost (`n_estimators=85`, `max_depth=5`, `tree_method="hist"`, `learning_rate=0.08`).
-- **Evaluation Tasks:** Strictly partitioned Binary (Normal vs. Attack) and Multiclass classifications.
-- **Evaluation Conditions (6 Total):**
-  1. `Reference` (Stratified 80/20 train/test split, clean test data)
-  2. `Reference + 10% Missingness` (Stratified split, 10% test-time Bernoulli missingness)
-  3. `Reference + 20% Missingness` (Stratified split, 20% test-time Bernoulli missingness)
-  4. `Temporal` (Chronological session holdout, clean test data)
-  5. `Temporal + 10% Missingness` (Chronological holdout, 10% test-time missingness)
-  6. `Temporal + 20% Missingness` (Chronological holdout, 20% test-time missingness)
-- **Paper Mode Statistical Protocol:**
-  - Evaluated across 5 independent random seeds: `[42, 52, 62, 72, 82]`.
-  - Statistical aggregation reporting sample means, standard deviations, and 95% Student-$t$ confidence intervals ($df=4$).
-
----
-
-## 2. Directory Structure & Key Files
-
-```
-NIDS-Reliability/
-├── configs/
-│   ├── experiment_config.yaml         # Preserved CICIDS2017 reference configuration
-│   └── unsw_experiment_config.yaml    # Standalone UNSW-NB15 experimental parameters
-├── src/
-│   ├── 01_setup.py ... 07_*.py        # CICIDS2017 pipeline (Part A, preserved intact)
-│   ├── unsw_01_setup.py               # UNSW-NB15 setup, hyperparams, & exclusion rationale
-│   ├── unsw_02_data_and_temporal.py   # UNSW-NB15 ingestion, class audit, & session splits
-│   ├── unsw_03_preprocessing.py       # Imputers, encoders, model factories, & LR convergence audit
-│   ├── unsw_04_experiments.py         # UNSW-NB15 6-condition experiment runner
-│   ├── unsw_05_analysis.py            # Degradation, FPR, & attack-level recall calculations
-│   ├── unsw_06_repeated_figures.py    # 5-seed aggregation (95% CI) & Figures 1-6
-│   ├── unsw_07_validation_export.py   # Zero-leakage assertions & structured CSV/JSON exports
-│   └── cross_dataset_analysis.py      # Cross-dataset comparative synthesis & visualizations
-├── run_experiments.py                 # Master runner for CICIDS2017 (Part A)
-├── run_unsw_experiments.py            # Master runner for UNSW-NB15 (Part B)
-├── run_cross_analysis.py              # Master runner for cross-dataset synthesis
-├── diagnostic_audit.py                # Automated audit script for outputs & temporal health
-├── EXPERIMENT_DESIGN.md               # Detailed methodology for CICIDS2017
-├── RESULTS_GUIDE.md                   # Complete results guide for CICIDS2017
-├── UNSW_EXPERIMENT_DESIGN.md          # Comprehensive methodology for UNSW-NB15
-├── CROSS_DATASET_REPORT.md            # In-depth comparative research report
-└── AGENTS.md                          # Mandatory scientific constraints & agent guardrails
+```powershell
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+.venv/Scripts/python.exe acquire_benchmarks.py
 ```
 
----
+See [dataset provenance](audit/dataset_provenance.md) and the
+[pinned revisions and checksums](configs/dataset_manifest.json). Acquisition
+places data in `data/cicids2017` and `data/unsw_nb15`. The loaders accept only
+the pinned file contents. Linux/macOS use `.venv/bin/python` and shell-appropriate
+environment syntax.
 
-## 3. Reproduction & Execution Instructions
+## Execute and verify
 
-### A. Environment Setup
-Install required dependencies:
-```bash
-pip install -r requirements.txt
-pip install huggingface_hub xgboost scikit-learn scipy matplotlib pandas numpy
+From the repository root, set a new output root for each execution. Capture
+stdout and stderr outside the run directories if you need execution logs.
+An existing dataset output directory prevents an accidental overwrite.
+
+```powershell
+$env:NIDS_OUTPUT_ROOT = 'verified_runs/paper'
+$env:OPENBLAS_NUM_THREADS = '2'
+$env:OMP_NUM_THREADS = '2'
+.venv/Scripts/python.exe -u run_experiments.py
+.venv/Scripts/python.exe -u run_unsw_experiments.py
+.venv/Scripts/python.exe verify_run.py verified_runs/paper/cicids2017
+.venv/Scripts/python.exe verify_run.py verified_runs/paper/unsw_nb15
+.venv/Scripts/python.exe run_cross_analysis.py
+.venv/Scripts/python.exe build_evidence.py verified_runs/paper NIDS-Reliability-Final
 ```
 
-### B. Running UNSW-NB15 Experiments (Part B)
-Execute the complete five-seed paper evaluation for UNSW-NB15:
-```bash
-python run_unsw_experiments.py
-```
-Outputs are exported to `results/unsw_nb15/`:
-- `repeated_seed_results.csv`: Authoritative 180-row dataset across all 5 seeds.
-- `repeated_seed_summary.csv`: 5-seed means, standard deviations, and 95% Student-$t$ CIs.
-- `degradation_*.csv`: Relative degradation tables for Macro-F1, Recall, and FPR.
-- `interaction_results.csv`: Combined stress non-additive interaction terms.
-- `attack_level_recall.csv`: Per-attack detection recall tracking across all 10 classes.
-- `figure1_*.png` to `figure6_*.png`: Publication charts.
-- `duplicate_overlap_audit.json`: Quantifies cross-partition duplicate flow overlap (5.16% exact overlap) and documents handling policy.
-- `validation.json`: Audit log confirming preprocessor zero-leakage, condition completeness, full 10-fit LR convergence diagnostics, and status `PASS`.
+For a first-pass check, set `NIDS_QUICK=1` and select a fresh output root such
+as `verified_runs/initial`. This runs seed 42 with training caps of 100,000
+CICIDS2017 rows or 50,000 UNSW-NB15 rows per split. All evaluation rows in
+each partition remain eligible. Remove the environment setting before a paper
+run. Use `build_evidence.py --partial verified_runs/initial NIDS-Reliability-Final-Partial`
+for a distinctly labelled package.
+Use `run_cross_analysis.py --partial` for a preliminary comparison of
+verified shared seeds, with `--fallback` if the datasets live in two run roots.
+The resulting `cross_dataset_partial` directory records the two input modes
+and stays separate from the full-data cross-dataset analysis.
 
-### C. Running Cross-Dataset Analysis
-To generate side-by-side comparison tables and cross-dataset figures:
-```bash
-python run_cross_analysis.py
-```
-Outputs are dynamically generated and verified against source summaries (`results/cicids2017/` and `results/unsw_nb15/`), exporting to `results/cross_dataset/`:
-- `comparison_metrics.csv`
-- `comparison_degradation.csv`
-- `comparison_interaction.csv`
-- `comparison_class_dynamics.csv`
-- `figure_cross_1_reference_vs_temporal.png` to `figure_cross_4_model_resilience_ranking.png`
+## Protocol and outputs
 
----
+The default uses seeds 42, 52, 62, 72 and 82 with full training partitions.
+The random reference is a stratified 80/20 split. CICIDS2017 holds out Friday
+after training on Monday–Thursday. UNSW-NB15 uses the official train/test
+partition. It has unverified chronological ordering. The internal result key
+`Temporal` maps to these two dataset-specific holdouts.
 
-## 4. Key Scientific Findings & Guardrails
+Both partitions are evaluated clean and at 10% and 20% controlled
+numeric-feature dropout. Fit operations use training rows only. The saved
+mask counts distinguish selected cells from newly missing cells. Binary attack
+FPR and multiclass macro one-vs-rest FPR use different definitions.
 
-1. **Continuous vs. Structural Temporal Failure:**
-   - **CICIDS2017:** Friday test partition contains only 5 of 27 classes (22 attack classes absent, 4 unseen). Temporal Macro-F1 collapses to a structural ceiling near ~0.037.
-   - **UNSW-NB15:** All 10 classes are populated across both partitions. Temporal degradation reflects true continuous distribution and feature drift.
-2. **Feature Exclusion Policy:**
-   - All spatial identifiers (`srcip`, `dstip`) and synthetic row keys (`id`) are excluded to prevent memorization shortcuts.
-   - Ephemeral `sport` is excluded as dynamic client socket noise.
-   - Raw `dsport` is excluded to prevent lab server bias; behavioral port context is preserved via 6 engineered features (`service`, `ct_srv_src`, `ct_srv_dst`, `ct_src_dport_ltm`, `ct_dst_sport_ltm`, `is_sm_ips_ports`).
-3. **Leakage-Safe Preprocessing:**
-   - Categorical `OneHotEncoder(handle_unknown="ignore")` and numeric `SimpleImputer(strategy="median")` are fitted strictly on training data.
-   - Missingness masks are applied exclusively to evaluation matrix copies at test time.
-4. **Research Boundaries (AGENTS.md):**
-   - No fabricated experimental results.
-   - No temporal proxies (e.g. flow duration as fake timestamps).
-   - Findings represent benchmark reliability profiles; they do not constitute proof of concept drift, adversarial robustness, universal model superiority, or production readiness.
-5. **Cross-Partition Duplicate Overlap Limitation:**
-   - 4,247 test flows (5.16% of the test partition) in the official UNSW-NB15 dataset are exact duplicates of training instances. While transformation and temporal sequence leakage are strictly zero, cross-partition duplicate overlap permits in-distribution flow memorization in the reference split. Zero leakage is qualified to transformation and chronological boundaries.
+Each completed run writes dataset provenance, per-file validation,
+reproducible split indices, confusion matrices, class recalls, prediction
+artifacts and their checksums, and `verified_seed_metrics.csv`,
+`verified_summary.csv`, `paired_degradation.csv` and
+`prediction_validation.json`. Paper mode requires five completed seeds.
+The standalone verifier independently checks metrics and uncertainty.
+See [results interpretation](RESULTS_EXPLANATION.md) and the
+[author handoff](AUTHOR_HANDOFF.md) for scope and limitations.
 
+## Revision evidence snapshot
+
+[Run status](RUN_STATUS.json) identifies the verified seeds and run modes
+behind the checked-in tables and figures in `paper_assets/`. The full
+prediction archives and split IDs are generated locally by the commands
+above. The CICIDS2017 snapshot is preliminary, and the UNSW-NB15 snapshot
+contains the five-seed results recovered from saved predictions.

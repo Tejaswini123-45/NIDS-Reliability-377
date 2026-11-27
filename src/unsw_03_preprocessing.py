@@ -1,3 +1,6 @@
+from time import perf_counter
+from src.evidence import save_predictions
+
 # ============================================================================
 # UNSW-NB15 Reliability Evaluation Pipeline — Preprocessing & Models (03)
 # ============================================================================
@@ -68,22 +71,25 @@ def transform_feature_matrix(preprocessors, df_input):
 # 2. CONTROLLED TEST-TIME MISSINGNESS INJECTION
 # ============================================================================
 
-def inject_feature_missingness(df_eval, rate, seed, num_cols):
+def inject_feature_missingness(df_eval, rate, seed, num_cols, *, counts=False):
     """
     Injects independent Bernoulli missingness (NaNs) into numeric features of
     the test partition only. The original DataFrame is never modified.
     """
     if rate <= 0.0:
-        return df_eval
+        return (df_eval, 0, 0) if counts else df_eval
         
     rng = np.random.default_rng(seed)
     df_stressed = df_eval.copy()
     
+    selected = newly_missing = 0
     for col in num_cols:
         mask = rng.random(len(df_stressed)) < rate
+        selected += int(mask.sum())
+        newly_missing += int(np.count_nonzero(mask & df_eval[col].notna().to_numpy()))
         df_stressed.loc[mask, col] = np.nan
         
-    return df_stressed
+    return (df_stressed, selected, newly_missing) if counts else df_stressed
 
 # ============================================================================
 # 3. OPTIMIZED MODEL FACTORIES
@@ -208,7 +214,7 @@ def calculate_fpr_from_cm(cm):
         fprs.append(fp / denom if denom > 0 else 0.0)
     return float(np.mean(fprs))
 
-def evaluate_predictions(y_true, y_pred, labels):
+def evaluate_predictions(y_true, y_pred, labels, binary=False):
     """Computes all required metrics with zero_division=0 guardrails."""
     labels = list(labels)
     acc = accuracy_score(y_true, y_pred)
@@ -227,23 +233,20 @@ def evaluate_predictions(y_true, y_pred, labels):
                 y_true, y_pred, labels=labels, average="weighted", zero_division=0
             )[2]
         ),
-        "FPR": calculate_fpr_from_cm(cm),
+        "FPR": (float(cm[0, 1] / cm[0].sum()) if cm[0].sum() else 0.0)
+               if binary else calculate_fpr_from_cm(cm),
         "Confusion Matrix": cm,
         "Per-class Recall": dict(zip(labels, r)),
     }
 
 def evaluate_fitted_model(
     fitted, preprocessors, df_test_raw, y_test, labels, condition,
-    model_name, binary=False, missingness=0.0, seed=42
+    model_name, binary=False, missingness=0.0, seed=42, *, test_idx, seen, fit_seconds
 ):
     """Transforms test data, injects missingness if requested, predicts, and evaluates."""
-    # 1. Stress injection if missingness > 0
-    if missingness > 0.0:
-        df_eval_raw = inject_feature_missingness(
-            df_test_raw, rate=missingness, seed=seed, num_cols=preprocessors["num_cols"]
-        )
-    else:
-        df_eval_raw = df_test_raw
+    df_eval_raw, selected, newly_missing = inject_feature_missingness(
+        df_test_raw, rate=missingness, seed=seed, num_cols=preprocessors["num_cols"], counts=True)
+    eligible_cells = len(df_test_raw) * len(preprocessors["num_cols"])
 
     # 2. Transform through train-fitted imputer and encoder
     X_eval = transform_feature_matrix(preprocessors, df_eval_raw)
@@ -253,7 +256,9 @@ def evaluate_fitted_model(
         X_eval = fitted["scaler"].transform(X_eval).astype(np.float32, copy=False)
         
     # 4. Inference
+    start_inference = perf_counter()
     raw_pred = fitted["model"].predict(X_eval)
+    inference_seconds = perf_counter() - start_inference
     
     if binary:
         y_true_eval = np.asarray(y_test).astype(int)
@@ -269,7 +274,7 @@ def evaluate_fitted_model(
         else:
             y_pred = np.asarray(raw_pred).astype(str)
             
-    metrics = evaluate_predictions(y_true_eval, y_pred, labels_eval)
+    metrics = evaluate_predictions(y_true_eval, y_pred, labels_eval, binary)
     
     metrics.update({
         "Task": "binary" if binary else "multiclass",
@@ -280,6 +285,14 @@ def evaluate_fitted_model(
         "LR_Diag": fitted.get("lr_diag"),
     })
     
+    metrics.update({
+        "Eligible stress cells": eligible_cells, "Mask selected cells": selected,
+        "New missing cells": newly_missing, "Mask selected (%)": 100 * selected / eligible_cells,
+        "Fit seconds": fit_seconds, "Predict seconds": inference_seconds,
+        "Records per second": len(y_pred) / inference_seconds,
+        "Model parameters": json.dumps(fitted["model"].get_params(), sort_keys=True),
+    })
+    save_predictions(OUTPUT_DIR, metrics, y_true_eval, y_pred, labels_eval, seen, test_idx)
     return metrics
 
 print("Preprocessing pipelines, model factories, and evaluation wrappers ready.\n")

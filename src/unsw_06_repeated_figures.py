@@ -237,6 +237,10 @@ attack_recall_degradation = attack_recall_final_degradation
 # 4. PUBLICATION FIGURES GENERATION
 # ============================================================================
 
+def holdout_label(condition):
+    return condition.replace("Temporal", "Official holdout")
+
+
 if not final_condition_metrics.empty:
     print("\nGenerating publication figures...")
 
@@ -249,13 +253,13 @@ if not final_condition_metrics.empty:
     fig, ax = plt.subplots(figsize=(8, 4.5))
     for model in MODEL_NAMES:
         g = plot_df[plot_df["Model"] == model]
-        ax.plot(g["Condition"], g["Macro_F1"], marker="o", linewidth=2, label=model)
-    ax.set_title("UNSW-NB15: Reference vs Chronological Macro-F1 (Multiclass)")
+        ax.plot(g["Condition"].map(holdout_label), g["Macro_F1"], marker="o", linewidth=2, label=model)
+    ax.set_title("UNSW-NB15: Reference vs Official Holdout Macro-F1 (Multiclass)")
     ax.set_ylabel("Macro-F1")
     ax.grid(alpha=0.25)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(OUTPUT_DIR / "figure1_reference_vs_temporal_macro_f1.png", dpi=180)
+    fig.savefig(OUTPUT_DIR / "figure1_reference_vs_temporal_macro_f1.png", dpi=300)
     plt.close(fig)
 
     # Figure 2 — Degradation by Condition
@@ -266,7 +270,7 @@ if not final_condition_metrics.empty:
     fig, ax = plt.subplots(figsize=(10, 4.5))
     for model in MODEL_NAMES:
         g = d[d["Model"] == model]
-        ax.plot(g["Condition"], g["Degradation"], marker="o", linewidth=2, label=model)
+        ax.plot(g["Condition"].map(holdout_label), g["Degradation"], marker="o", linewidth=2, label=model)
     ax.axhline(0, color="gray", linestyle="--", linewidth=1)
     ax.set_title("UNSW-NB15: Relative Macro-F1 Degradation Across Conditions")
     ax.set_ylabel("Relative Degradation")
@@ -274,7 +278,7 @@ if not final_condition_metrics.empty:
     ax.grid(alpha=0.25)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(OUTPUT_DIR / "figure2_degradation.png", dpi=180)
+    fig.savefig(OUTPUT_DIR / "figure2_degradation.png", dpi=300)
     plt.close(fig)
 
     # Figure 3 — Interaction Effects
@@ -285,13 +289,13 @@ if not final_condition_metrics.empty:
             z = g[g["Model"] == model]
             ax.plot(z["Missingness"], z["Interaction"], marker="s", linewidth=2, label=model)
         ax.axhline(0, color="gray", linestyle="--", linewidth=1)
-        ax.set_title("UNSW-NB15: Temporal x Missingness Interaction (Multiclass)")
+        ax.set_title("UNSW-NB15: Official Holdout × Missingness Interaction (Multiclass)")
         ax.set_ylabel("Non-Additive Interaction Term")
         ax.set_xlabel("Missingness Rate")
         ax.grid(alpha=0.25)
         ax.legend()
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure3_interaction.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure3_interaction.png", dpi=300)
         plt.close(fig)
 
     # Figure 4 — Attack-Level Recall Degradation
@@ -302,7 +306,7 @@ if not final_condition_metrics.empty:
             .head(10)
         )
         fig, ax = plt.subplots(figsize=(10, 5))
-        labels = [f"{r['Model'][:3]}-{r['Class']}\n({r['Condition'][:12]})" for _, r in top_drops.iterrows()]
+        labels = [f"{r['Model'][:3]}-{r['Class']}\n({holdout_label(r['Condition'])})" for _, r in top_drops.iterrows()]
         bars = ax.bar(range(len(top_drops)), top_drops["Recall_Degradation"], color="#e11d48", alpha=0.85)
         ax.set_xticks(range(len(top_drops)))
         ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=8)
@@ -310,7 +314,7 @@ if not final_condition_metrics.empty:
         ax.set_title("UNSW-NB15: Largest Attack-Level Recall Drops")
         ax.grid(axis="y", alpha=0.25)
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure4_attack_recall_degradation.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure4_attack_recall_degradation.png", dpi=300)
         plt.close(fig)
 
     # Figure 5 — Representative Confusion Matrix (Seed 42 Best Model)
@@ -336,7 +340,7 @@ if not final_condition_metrics.empty:
             ax.set_ylabel("True Label")
             ax.set_xlabel("Predicted Label")
             fig.tight_layout()
-            fig.savefig(OUTPUT_DIR / "figure5_representative_confusion_matrix.png", dpi=180)
+            fig.savefig(OUTPUT_DIR / "figure5_representative_confusion_matrix.png", dpi=300)
             plt.close(fig)
 
     # Figure 6 — Repeated Seed Variability with 95% CIs
@@ -350,7 +354,7 @@ if not final_condition_metrics.empty:
             g = fig_df[fig_df["Model"] == model]
             yerr = g["CI95_Macro_F1_High"] - g["Mean_Macro_F1"]
             ax.errorbar(
-                g["Condition"], g["Mean_Macro_F1"], yerr=yerr,
+                g["Condition"].map(holdout_label), g["Mean_Macro_F1"], yerr=yerr,
                 marker="o", capsize=5, linewidth=2, label=model
             )
         ax.set_title("UNSW-NB15: 5-Seed Macro-F1 with 95% Student-t CIs")
@@ -358,7 +362,7 @@ if not final_condition_metrics.empty:
         ax.grid(alpha=0.25)
         ax.legend()
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure6_repeated_seed_variability.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure6_repeated_seed_variability.png", dpi=300)
         plt.close(fig)
 
     print("Figures generated successfully.\n")

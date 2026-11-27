@@ -270,7 +270,7 @@ if not final_condition_metrics.empty:
     ax.grid(alpha=0.25)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(OUTPUT_DIR / "figure1_reference_vs_temporal_macro_f1.png", dpi=180)
+    fig.savefig(OUTPUT_DIR / "figure1_reference_vs_temporal_macro_f1.png", dpi=300)
     plt.close(fig)
 
     # Figure 2 — degradation across all reliability conditions
@@ -289,7 +289,7 @@ if not final_condition_metrics.empty:
     ax.grid(alpha=0.25)
     ax.legend()
     fig.tight_layout()
-    fig.savefig(OUTPUT_DIR / "figure2_degradation.png", dpi=180)
+    fig.savefig(OUTPUT_DIR / "figure2_degradation.png", dpi=300)
     plt.close(fig)
 
     # Figure 3 — temporal × missingness interaction
@@ -305,7 +305,7 @@ if not final_condition_metrics.empty:
         ax.grid(alpha=0.25)
         ax.legend()
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure3_interaction.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure3_interaction.png", dpi=300)
         plt.close(fig)
 
     # Figure 4 — worst attack-level recall degradation by condition.
@@ -331,7 +331,7 @@ if not final_condition_metrics.empty:
         ax.set_ylabel("Reference Recall − Condition Recall")
         ax.grid(axis="y", alpha=0.25)
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure4_attack_recall_degradation.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure4_attack_recall_degradation.png", dpi=300)
         plt.close(fig)
 
     # Figure 5 — representative confusion matrix from seed-42 reference run.
@@ -350,7 +350,7 @@ if not final_condition_metrics.empty:
         ax.set_ylabel("True class index")
         fig.colorbar(im, ax=ax, label="Count")
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure5_representative_confusion_matrix.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure5_representative_confusion_matrix.png", dpi=300)
         plt.close(fig)
 
     # Figure 6 — five-seed Macro-F1 variability with t-based 95% CI.
@@ -380,7 +380,7 @@ if not final_condition_metrics.empty:
         ax.grid(alpha=0.25)
         ax.legend()
         fig.tight_layout()
-        fig.savefig(OUTPUT_DIR / "figure6_repeated_seed_variability.png", dpi=180)
+        fig.savefig(OUTPUT_DIR / "figure6_repeated_seed_variability.png", dpi=300)
         plt.close(fig)
 else:
     print("Figures skipped because no experiment results are available.")

@@ -1,0 +1,55 @@
+{
+  "dataset_source": "kumaranimesh1901/CICIDS-2017",
+  "temporal_provenance": "capture_day_file_order",
+  "timestamp_policy": "Use whole capture-day files for the Monday\u2013Thursday / Friday split. Row timestamps are excluded from predictors and do not define this split.",
+  "quick_validation": true,
+  "paper_mode": false,
+  "fast_train_samples": 100000,
+  "fast_sampling": "stratified",
+  "seeds": [
+    42
+  ],
+  "models": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost"
+  ],
+  "tasks": [
+    "binary",
+    "multiclass"
+  ],
+  "missingness_levels": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "conditions": [
+    "Reference",
+    "Reference+10% Missingness",
+    "Reference+20% Missingness",
+    "Temporal",
+    "Temporal+10% Missingness",
+    "Temporal+20% Missingness"
+  ],
+  "metrics": [
+    "Accuracy",
+    "Macro Precision",
+    "Macro Recall",
+    "Macro F1",
+    "Weighted F1",
+    "FPR"
+  ],
+  "degradation_formula": "(M_reference - M_condition) / M_reference for higher-is-better metrics; (M_condition - M_reference) / M_reference for FPR",
+  "interaction_formula": "D_combined - (D_temporal + D_missingness)",
+  "confidence_interval": "95% t-based CI across seeds",
+  "preprocessing": "median imputation fit on training partition only; StandardScaler fit on training partition only for Logistic Regression",
+  "stress_protocol": "random feature-value NaNs injected only into test/evaluation matrices at 10% and 20%, then transformed by the train-fitted imputer",
+  "efficiency": [
+    "split-level imputer reused across models and tasks",
+    "split feature matrices materialized once per seed",
+    "fitted estimator reused across normal/10%/20% evaluation",
+    "float32 feature matrices",
+    "column-wise missingness masks",
+    "conservative model parallelism"
+  ]
+}

@@ -1,3 +1,6 @@
+from time import perf_counter
+from src.evidence import save_predictions
+
 # Auto-extracted from CICIDS2017_Reliability_Framework_Final_Optimized_v6_FIXED.ipynb
 # Cell order is preserved intentionally for reproducibility.
 
@@ -267,7 +270,7 @@ def calculate_fpr_from_cm(cm):
         fprs.append(fp / denom if denom else 0.0)
     return float(np.mean(fprs))
 
-def evaluate_predictions(y_true, y_pred, labels):
+def evaluate_predictions(y_true, y_pred, labels, binary=False):
     labels = list(labels)
     acc = accuracy_score(y_true, y_pred)
     p, r, f1, _ = precision_recall_fscore_support(
@@ -285,7 +288,8 @@ def evaluate_predictions(y_true, y_pred, labels):
                 y_true, y_pred, labels=labels, average="weighted", zero_division=0
             )[2]
         ),
-        "FPR": calculate_fpr_from_cm(cm),
+        "FPR": (float(cm[0, 1] / cm[0].sum()) if cm[0].sum() else 0.0)
+               if binary else calculate_fpr_from_cm(cm),
         "Confusion Matrix": cm,
         "Per-class Recall": dict(zip(labels, r))
     }
@@ -293,7 +297,7 @@ def evaluate_predictions(y_true, y_pred, labels):
 
 # ================= NOTEBOOK CELL 18 =================
 # 15. Memory-efficient feature missingness stress
-def inject_feature_missingness(X, rate, seed):
+def inject_feature_missingness(X, rate, seed, *, counts=False):
     """
     Inject independent feature-value missingness into the evaluation matrix.
     The original matrix is never modified.
@@ -301,16 +305,19 @@ def inject_feature_missingness(X, rate, seed):
     A column-wise 1-D mask avoids allocating a full rows x features boolean matrix.
     """
     if rate <= 0:
-        return X
+        return (X, 0, 0) if counts else X
 
     rng = np.random.default_rng(seed)
     X_stress = X.copy()
 
+    selected = newly_missing = 0
     for j in range(X_stress.shape[1]):
         mask = rng.random(X_stress.shape[0]) < rate
+        selected += int(mask.sum())
+        newly_missing += int(np.count_nonzero(mask & ~np.isnan(X[:, j])))
         X_stress[mask, j] = np.nan
 
-    return X_stress
+    return (X_stress, selected, newly_missing) if counts else X_stress
 
 def apply_fitted_imputer(imputer, X):
     return transform_with_imputer(imputer, X)
@@ -382,14 +389,16 @@ def prepare_binary_labels(y):
 
 def evaluate_fitted(
     fitted, X_test_raw, y_test, labels, condition, model_name, binary=False,
-    missingness=0.0, seed=42
+    missingness=0.0, seed=42, *, test_idx, seen, fit_seconds
 ):
-    X_eval_raw = X_test_raw
-    if missingness > 0:
-        X_eval_raw = inject_feature_missingness(X_test_raw, missingness, seed)
+    X_eval_raw, selected, newly_missing = inject_feature_missingness(
+        X_test_raw, missingness, seed, counts=True)
+    eligible_cells = X_test_raw.size
 
     X_eval = transform_test(fitted, X_eval_raw)
+    start_inference = perf_counter()
     raw_pred = fitted["model"].predict(X_eval)
+    inference_seconds = perf_counter() - start_inference
 
     if binary:
         y_true_eval = prepare_binary_labels(y_test)
@@ -406,7 +415,7 @@ def evaluate_fitted(
         else:
             y_pred = np.asarray(raw_pred).astype(str)
 
-    metrics = evaluate_predictions(y_true_eval, y_pred, labels_eval)
+    metrics = evaluate_predictions(y_true_eval, y_pred, labels_eval, binary)
     metrics.update({
         "Task": "binary" if binary else "multiclass",
         "Model": model_name,
@@ -414,5 +423,13 @@ def evaluate_fitted(
         "Missingness": float(missingness),
         "Seed": int(seed),
     })
+    metrics.update({
+        "Eligible stress cells": eligible_cells, "Mask selected cells": selected,
+        "New missing cells": newly_missing, "Mask selected (%)": 100 * selected / eligible_cells,
+        "Fit seconds": fit_seconds, "Predict seconds": inference_seconds,
+        "Records per second": len(y_pred) / inference_seconds,
+        "Model parameters": json.dumps(fitted["model"].get_params(), sort_keys=True),
+    })
+    save_predictions(OUTPUT_DIR, metrics, y_true_eval, y_pred, labels_eval, seen, test_idx)
     return metrics
 

@@ -4,6 +4,9 @@
 *.parquet
 *.feather
 data/
+.sprint-backup.zip
+verified_runs/
+NIDS-Reliability-Final*/
 
 # Python
 __pycache__/

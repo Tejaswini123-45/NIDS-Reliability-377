@@ -17,40 +17,11 @@ def normalize_column_name(name):
         .lower()
     )
 
-def download_unsw_if_needed(local_dir, hf_sources):
-    local_dir = Path(local_dir)
-    train_path = local_dir / "UNSW_NB15_training-set.csv"
-    test_path = local_dir / "UNSW_NB15_testing-set.csv"
+from src.evidence import verify_dataset
 
-    if train_path.exists() and test_path.exists():
-        print(f"Using local UNSW-NB15 CSV files from {local_dir}")
-        return train_path, test_path, "local:" + str(local_dir)
-
-    # Check cached snapshots if present
-    if "HF_CACHE_DIR" in globals() and HF_CACHE_DIR.exists():
-        c_tr = HF_CACHE_DIR / "UNSW_NB15_training-set.csv"
-        c_te = HF_CACHE_DIR / "UNSW_NB15_testing-set.csv"
-        if c_tr.exists() and c_te.exists():
-            print(f"Using cached UNSW-NB15 CSV files from {HF_CACHE_DIR}")
-            return c_tr, c_te, "cache:" + str(HF_CACHE_DIR)
-
-    local_dir.mkdir(parents=True, exist_ok=True)
-    for repo_id in hf_sources:
-        try:
-            print(f"Attempting download from Hugging Face: {repo_id}...")
-            tr = hf_hub_download(repo_id=repo_id, filename="UNSW_NB15_training-set.csv", repo_type="dataset", local_dir=str(local_dir))
-            te = hf_hub_download(repo_id=repo_id, filename="UNSW_NB15_testing-set.csv", repo_type="dataset", local_dir=str(local_dir))
-            if Path(tr).exists() and Path(te).exists():
-                print(f"Successfully downloaded from {repo_id}")
-                return Path(tr), Path(te), f"hf:{repo_id}"
-        except Exception as exc:
-            print(f"  Download from {repo_id} failed: {exc}")
-
-    raise RuntimeError(
-        f"Unable to find or download UNSW-NB15 dataset files. Checked local dir {local_dir} and sources: {hf_sources}"
-    )
-
-train_file, test_file, selected_dataset_source = download_unsw_if_needed(LOCAL_DATA_DIR, HF_SOURCE_PREFERENCE)
+paths, selected_dataset_source = verify_dataset("unsw_nb15", OUTPUT_DIR)
+train_file = next(path for path in paths if "training" in path.name)
+test_file = next(path for path in paths if "testing" in path.name)
 
 print("\nReading UNSW-NB15 partitioned CSV files...")
 df_train_raw = pd.read_csv(train_file, low_memory=False)
@@ -83,19 +54,10 @@ print(f"Total unified records: {n_master:,}")
 # ============================================================================
 # AUDIT: TIMESTAMPS & PROVENANCE POLICY (ISSUE 3 RESOLUTION)
 # ============================================================================
-# In the official published ACCS benchmark distribution (UNSW_NB15_training-set.csv
-# and UNSW_NB15_testing-set.csv), row-level epoch timestamps ('stime' and 'ltime')
-# were stripped by ACCS. The files represent discrete network traffic capture sessions:
-#   - Session 0 (captured on 22/01/2015, 175,341 flows) -> Temporal Train
-#   - Session 1 (captured on 15/02/2015, 82,332 flows) -> Temporal Test
-# Per AGENTS.md Rule 2, flow duration ('dur') and packet counts are strictly FORBIDDEN
-# as fake timestamps. We cleanly scope the temporal split strictly to the verified
-# official session holdout.
-TEMPORAL_PROVENANCE_MODE = "official_session_holdout"
-temporal_order_desc = "Official ACCS discrete capture session holdout (Session 0 train vs. Session 1 test)"
-print(f"\n[PROVENANCE POLICY] Temporal provenance mode: {TEMPORAL_PROVENANCE_MODE}")
-print(f"  Description: {temporal_order_desc}")
-print("  Rule 2 Compliance: Flow duration ('dur') and packet counts are strictly forbidden as fake timestamps.")
+# These partition files lack verified chronological ordering.
+TEMPORAL_PROVENANCE_MODE = "official_train_test_holdout"
+temporal_order_desc = "Official Train/Test Holdout (internal condition key: Temporal)"
+print(temporal_order_desc)
 
 # ============================================================================
 # AUDIT: DUPLICATION ANALYSIS & CROSS-PARTITION OVERLAP (ISSUE 2 RESOLUTION)
@@ -119,16 +81,33 @@ test_dupes_without_id = int(df_test_raw.duplicated(subset=all_cols_excl_id).sum(
 # 2. Inter-partition (cross-partition) duplicate overlap quantification
 train_exact_tuples = set(df_train_raw[all_cols_excl_id].itertuples(index=False, name=None))
 test_exact_tuples = list(df_test_raw[all_cols_excl_id].itertuples(index=False, name=None))
-exact_cross_overlap_count = sum(1 for t in test_exact_tuples if t in train_exact_tuples)
-exact_cross_overlap_pct = (exact_cross_overlap_count / len(df_test_raw)) * 100.0
+exact_duplicate_test = np.array([row in train_exact_tuples for row in test_exact_tuples])
+exact_cross_overlap_count = int(exact_duplicate_test.sum())
+exact_cross_overlap_pct = 100 * exact_duplicate_test.mean()
 
-train_feat_tuples = set(df_train_raw[feature_cols_only].itertuples(index=False, name=None))
-test_feat_tuples = list(df_test_raw[feature_cols_only].itertuples(index=False, name=None))
-feat_cross_overlap_count = sum(1 for t in test_feat_tuples if t in train_feat_tuples)
-feat_cross_overlap_pct = (feat_cross_overlap_count / len(df_test_raw)) * 100.0
+from collections import defaultdict
+train_labels_by_features = defaultdict(set)
+for row, labels in zip(df_train_raw[feature_cols_only].itertuples(index=False, name=None),
+                       df_train_raw[["label", "attack_cat"]].itertuples(index=False, name=None)):
+    train_labels_by_features[row].add(labels)
 
-label_conflict_count = feat_cross_overlap_count - exact_cross_overlap_count
-label_conflict_pct = (label_conflict_count / len(df_test_raw)) * 100.0
+test_feature_rows = list(df_test_raw[feature_cols_only].itertuples(index=False, name=None))
+test_labels = list(df_test_raw[["label", "attack_cat"]].itertuples(index=False, name=None))
+feature_overlap = np.array([row in train_labels_by_features for row in test_feature_rows])
+conflicting = np.array([
+    bool(train_labels_by_features.get(row, set()) - {label})
+    for row, label in zip(test_feature_rows, test_labels)
+])
+feat_cross_overlap_count = int(feature_overlap.sum())
+feat_cross_overlap_pct = 100 * feature_overlap.mean()
+label_conflict_count = int(conflicting.sum())
+label_conflict_pct = 100 * conflicting.mean()
+duplicate_test_ids = np.flatnonzero(exact_duplicate_test) + len(df_train_raw)
+pd.DataFrame({
+    "Class": df_test_raw["attack_cat"], "Test rows": 1, "Exact overlap": exact_duplicate_test,
+    "Feature overlap": feature_overlap, "Conflicting labels": conflicting,
+}).groupby("Class").sum().to_csv(OUTPUT_DIR / "duplicate_overlap_by_class.csv")
+del train_exact_tuples, test_exact_tuples, train_labels_by_features, test_feature_rows, test_labels
 
 print("\n" + "=" * 80)
 print("[DUPLICATION AUDIT & CROSS-PARTITION OVERLAP QUANTIFICATION]")
@@ -159,18 +138,9 @@ duplicate_overlap_audit = {
     "cross_partition_feature_collision_pct": float(feat_cross_overlap_pct),
     "cross_partition_label_conflict_count": int(label_conflict_count),
     "cross_partition_label_conflict_pct": float(label_conflict_pct),
-    "handling_policy": (
-        "SCIENTIFICALLY JUSTIFIED HANDLING POLICY: "
-        "1. Network flow reality: Identical flows represent legitimate recurring operational traffic "
-        "(e.g., periodic NTP synchronizations, DNS heartbeats, persistent TCP scans, automated fuzzing loops). "
-        "Removing duplicates alters natural class priors and operational attack density. "
-        "2. Benchmark comparability: Preserving all official rows ensures exact comparability with published ACCS literature. "
-        "3. Leakage qualification: We distinguish PREPROCESSOR/ESTIMATOR LEAKAGE (strictly ZERO, as transformers "
-        "are fit exclusively on training data) and TEMPORAL ORDER LEAKAGE (strictly ZERO, Session 0 precedes Session 1) "
-        "from FLOW-LEVEL REPETITION CONTAMINATION (quantified at 5.16% cross-partition overlap). "
-        "The reference 80/20 split permits identical flow instances across train and test, enabling in-distribution memorization. "
-        "Our temporal holdout and missingness stress protocols specifically challenge this memorization by evaluating across session boundaries."
-    ),
+    "handling_policy": "Core official results retain all supplied rows. Sensitivity removes test rows with matching parsed features and labels in the official training file, ignoring row ID.",
+    "within_train_duplicates_with_id": int(df_train_raw.duplicated().sum()),
+    "within_test_duplicates_with_id": int(df_test_raw.duplicated().sum()),
 }
 
 if "OUTPUT_DIR" in globals():
@@ -185,6 +155,8 @@ if "OUTPUT_DIR" in globals():
 # 1. Binary label
 if "label" not in df_master.columns:
     raise ValueError("Mandatory binary label column 'label' not found in UNSW-NB15 schema.")
+if not df_master["label"].isin([0, 1]).all():
+    raise ValueError("Expected binary labels 0 and 1")
 df_master["label"] = df_master["label"].astype(int)
 
 # 2. Multiclass label standardization
@@ -210,6 +182,8 @@ normalized_cats[normalized_cats.str.casefold() == "backdoor"] = "Backdoor"
 normalized_cats[normalized_cats.str.casefold() == "shellcode"] = "Shellcode"
 normalized_cats[normalized_cats.str.casefold() == "worms"] = "Worms"
 
+if not (normalized_cats.eq("Normal") == df_master["label"].eq(0)).all():
+    raise ValueError("Binary and multiclass labels disagree")
 df_master["attack_cat"] = normalized_cats
 
 # Verify target classes
@@ -294,13 +268,6 @@ for _, r in df_split_audit.iterrows():
 
 # Scientific non-equivalence check:
 absent_temp_classes = df_split_audit[df_split_audit["Temp_Covered"] == "NO"]["Class"].tolist()
-if not absent_temp_classes:
-    print("\n[SCIENTIFIC DISTINCTION VERIFIED]")
-    print("  Unlike CICIDS2017 (where 22 attack classes had 0 Friday test samples, capping temporal Macro-F1 at ~0.037),")
-    print("  ALL 10 CLASSES in UNSW-NB15 are populated across both Temporal Train and Temporal Test partitions.")
-    print("  Therefore, UNSW-NB15 temporal evaluation measures genuine feature and distribution drift")
-    print("  across continuous class support, rather than structural class-absence failure.")
-else:
-    print(f"[WARN] Classes absent in temporal split: {absent_temp_classes}")
+print(f"Classes absent from either official partition: {absent_temp_classes}")
 
 print("\nData loading & temporal provenance preparation complete.\n")

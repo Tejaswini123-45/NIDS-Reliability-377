@@ -1,3 +1,6 @@
+from time import perf_counter
+from src.evidence import save_split
+
 # ============================================================================
 # UNSW-NB15 Reliability Evaluation Pipeline — Experiment Runner (04)
 # ============================================================================
@@ -102,6 +105,7 @@ def run_unsw_one_seed(seed):
     # Materialize features and fit preprocessors once per split
     prepared_splits = {}
     for split_name, (fit_idx, test_idx) in split_configs.items():
+        save_split(OUTPUT_DIR, seed, split_name, fit_idx, test_idx, y_all_mc)
         df_train_sub = df_master.iloc[fit_idx]
         df_test_sub = df_master.iloc[test_idx]
 
@@ -141,6 +145,7 @@ def run_unsw_one_seed(seed):
 
             for model_name in MODEL_NAMES:
                 # Fit model once per (seed, task, split, model)
+                start_fit = perf_counter()
                 fitted = fit_model_for_unsw(
                     model_name=model_name,
                     X_train=prep["X_train"],
@@ -150,6 +155,7 @@ def run_unsw_one_seed(seed):
                 )
 
                 # Evaluate across all 3 conditions for this split (0%, 10%, 20% missingness)
+                fit_seconds = perf_counter() - start_fit
                 for condition, missingness in CONDITION_SPECS:
                     if condition.startswith(split_name):
                         result = evaluate_fitted_model(
@@ -163,6 +169,9 @@ def run_unsw_one_seed(seed):
                             binary=binary,
                             missingness=missingness,
                             seed=seed,
+                            test_idx=prep["test_idx"],
+                            seen=np.unique(y_train),
+                            fit_seconds=fit_seconds,
                         )
                         rows.append(result)
 

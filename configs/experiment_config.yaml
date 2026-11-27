@@ -1,9 +1,13 @@
-# Reference configuration extracted from the final notebook.
-# The notebook remains the source of truth for executable settings.
+# Revision protocol. Executable values and model parameters are also exported per run.
+dataset: CICIDS2017
+manifest: configs/dataset_manifest.json
 seed_set: [42, 52, 62, 72, 82]
 models: [LogisticRegression, RandomForest, XGBoost]
 tasks: [binary, multiclass]
-missingness_rates: [0.10, 0.20]
-temporal_provenance: validated_row_timestamp_or_capture_day
-paper_mode: false
-quick_validation: true
+missingness_rates: [0.0, 0.10, 0.20]
+missingness_eligible: numeric_evaluation_predictors
+holdout: capture_day_monday_thursday_vs_friday
+internal_holdout_condition: Temporal
+paper_mode_default: true
+quick_validation_env: NIDS_QUICK
+quick_training_cap: 100000

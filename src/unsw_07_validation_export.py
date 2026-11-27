@@ -25,39 +25,22 @@ lr_diagnostic_log = []
 source_df = repeated_results if (PAPER_MODE and not repeated_results.empty) else results_all
 
 if not source_df.empty:
-    lr_rows = source_df[source_df["Model"] == "Logistic Regression"]
-    # We want unique fits per (Task, Condition, Seed)
+    lr_rows = source_df[source_df["Model"].eq("Logistic Regression") & source_df["Missingness"].eq(0)]
     for _, row in lr_rows.iterrows():
         diag = row.get("LR_Diag")
-        if isinstance(diag, dict):
-            n_iter_v = diag.get("n_iter")
-            max_iter_v = diag.get("max_iter", 300)
-            conv_v = diag.get("converged_without_warning", True)
-            warn_v = diag.get("warnings_text", [])
-        else:
-            n_iter_v = int(row.get("LR_N_Iter", 75)) if pd.notna(row.get("LR_N_Iter")) else None
-            max_iter_v = 300
-            conv_v = bool(row.get("LR_Converged", True)) if pd.notna(row.get("LR_Converged")) else True
-            warn_v = []
-
+        if not isinstance(diag, dict):
+            raise ValueError("Missing logistic regression convergence diagnostic")
         lr_diagnostic_log.append({
             "task": str(row["Task"]),
             "condition": str(row["Condition"]),
             "seed": int(row["Seed"]),
-            "n_iter": n_iter_v,
-            "max_iter": max_iter_v,
-            "converged_without_warning": conv_v,
-            "warnings_captured": warn_v,
+            "n_iter": diag["n_iter"],
+            "max_iter": diag["max_iter"],
+            "converged_without_warning": diag["converged_without_warning"],
+            "warnings_captured": diag["warnings_text"],
         })
 
-# Unique fit records per (Task, Seed, Condition)
-seen_keys = set()
-unique_lr_records = []
-for r in lr_diagnostic_log:
-    k = (r["task"], r["seed"], r["condition"])
-    if k not in seen_keys:
-        seen_keys.add(k)
-        unique_lr_records.append(r)
+unique_lr_records = lr_diagnostic_log
 
 mc_iters = [r["n_iter"] for r in unique_lr_records if r["task"] == "multiclass" and r["n_iter"] is not None]
 bin_iters = [r["n_iter"] for r in unique_lr_records if r["task"] == "binary" and r["n_iter"] is not None]
@@ -94,10 +77,8 @@ validation_metadata = {
     "leakage_qualification_policy": (
         "Strict distinction between leakage forms: "
         "(1) Preprocessor & estimator leakage: ZERO (eliminated via train-only fitting). "
-        "(2) Temporal sequence leakage: ZERO (eliminated via discrete session holdout). "
-        "(3) Flow duplicate contamination: Explicitly quantified at 5.16% cross-partition overlap. "
-        "The reference 80/20 split preserves benchmark-level flow duplication (~36.8%), which enables "
-        "in-distribution memorization. The temporal holdout directly stresses this memorization."
+        "(2) The official partition files do not establish chronological ordering. "
+        "(3) Value overlap is assessed separately from row identities."
     ),
     "lr_convergence_audit": {
         "transparency_note": "Terminating below max_iter indicates stopping tolerance (1e-3) was satisfied; reaching max_iter indicates iteration boundary was encountered. Iteration count alone is not claimed as mathematical proof of global optimality.",
@@ -112,7 +93,7 @@ validation_metadata = {
         },
         "records_all_seeds_and_tasks": unique_lr_records,
     },
-    "scientific_non_equivalence_note": "UNSW-NB15 contains all 10 target classes across both training and testing partitions, measuring true feature and distribution drift. This differs fundamentally from CICIDS2017, where 22 attack classes were absent on Friday, creating a structural Macro-F1 bound near 0.037.",
+    "scientific_non_equivalence_note": "Official Train/Test Holdout supports a partition comparison. Class coverage, feature sets and chronology differ from CICIDS2017.",
 }
 
 # ---------------- SCIENTIFIC ASSERTIONS ----------------
@@ -166,15 +147,14 @@ if not results_all.empty:
 validation_metadata["validation_status"] = "PASS"
 print("\nValidation Status: PASS")
 print("  [OK] Zero preprocessor/estimator leakage: Encoders, imputers, and scalers fitted on training subsets only.")
-print("  [OK] Zero temporal order leakage: Session 0 strictly precedes Session 1 in discrete capture provenance.")
-print("  [OK] Cross-partition duplicate overlap quantified (5.16% exact overlap) and handled under documented benchmark policy.")
+print("  [OK] Official partition row identities are disjoint. Chronological ordering is unverified.")
+print(f"  [OK] Cross-partition exact overlap: {exact_cross_overlap_pct:.2f}%.")
 print("  [OK] Unseen test categories safely handled via all-zeros dummy mapping.")
 print("  [OK] Source/destination ports and identifiers excluded with scientific justification.")
 print("  [OK] Both binary and multiclass evaluations completed independently.")
 print("  [OK] All 6 evaluation conditions completed across all 3 models.")
-print("  [OK] All 10 classes audited with continuous temporal class coverage.")
-print("  [OK] LR convergence states intercepted and recorded transparently across all 5 seeds and both tasks.")
-print("  [OK] Five-seed paper mode protocol validated with Student-t 95% CIs.")
+print("  [OK] All 10 classes audited with official holdout class coverage.")
+print(f"  [OK] Seeds evaluated: {validation_metadata['seeds']}.")
 
 # ============================================================================
 # EXPORT ARTIFACTS TO RESULTS DIRECTORY
@@ -245,20 +225,34 @@ with open(OUTPUT_DIR / "experiment_config.json", "w") as f:
         }
     }, f, indent=2)
 
-file_validation_info = [
-    {
-        "file": str(train_file.name),
-        "rows": int(len(df_train_raw)),
-        "partition_role": "temporal_train_session",
-    },
-    {
-        "file": str(test_file.name),
-        "rows": int(len(df_test_raw)),
-        "partition_role": "temporal_test_session",
-    }
-]
+file_validation_info = []
+for path, frame, role in [
+    (train_file, df_train_raw, "official_train"), (test_file, df_test_raw, "official_test"),
+]:
+    core = frame.drop(columns="_session_partition")
+    numeric = core.select_dtypes(include="number")
+    file_validation_info.append({
+        "file": path.name,
+        "rows": len(core),
+        "partition_role": role,
+        "columns": list(core.columns),
+        "missing_cells": int(core.isna().sum().sum()),
+        "infinite_numeric_cells": int(np.isinf(numeric.to_numpy()).sum()),
+        "class_counts": {str(k): int(v) for k, v in core["attack_cat"].value_counts(dropna=False).items()},
+        "timestamp_columns": [name for name in core if name in {"stime", "ltime", "timestamp"}],
+    })
 
 with open(OUTPUT_DIR / "dataset_file_validation.json", "w") as f:
     json.dump(file_validation_info, f, indent=2)
 
 print("Export complete. All files written successfully.\n")
+
+from src.dataset_audit import audit_reference_overlap
+from src.evidence import finalize
+from src.runtime_info import save_peak_memory
+
+if RUN_EXPERIMENTS:
+    audit_reference_overlap(OUTPUT_DIR, OUTPUT_DIR, train_file, test_file)
+    finalize(OUTPUT_DIR, repeated_results, SEEDS if PAPER_MODE else [SEED],
+             "Official Train/Test Holdout", feature_candidates, duplicate_test_ids)
+    save_peak_memory(OUTPUT_DIR)

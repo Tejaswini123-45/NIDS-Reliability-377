@@ -1,3 +1,5 @@
+> **Historical document.** This predates the paper 377 revision audit. See the current README, benchmark manifest and prediction-audited evidence for the revised protocol.
+
 # Results Guide: CICIDS2017 Paper-Mode Outputs
 
 ## Output directory

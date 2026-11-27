@@ -40,7 +40,7 @@ validation = {
     "quick_validation": bool(QUICK_VALIDATION),
     "paper_mode": bool(PAPER_MODE),
     "fast_train_samples": int(FAST_TRAIN_SAMPLES),
-    "seeds": list(SEEDS),
+    "seeds": list(SEEDS) if PAPER_MODE else [SEED],
     "missingness_levels": list(MISSINGNESS_LEVELS),
     "condition_count_expected": len(EXPECTED_CONDITIONS),
 }
@@ -160,7 +160,7 @@ print("✓ Binary + multiclass")
 print("✓ Reference + temporal + combined conditions")
 print("✓ Degradation + interaction analysis")
 print("✓ Attack-level analysis across all conditions")
-print("✓ Full-data paper mode + five reproducible seeds")
+print(f"Seeds evaluated: {SEEDS if PAPER_MODE else [SEED]}")
 
 
 # ================= NOTEBOOK CELL 31 =================
@@ -194,15 +194,14 @@ with open(OUTPUT_DIR / "experiment_config.json", "w") as f:
             else "capture_day_file_order"
         ),
         "timestamp_policy": (
-            "Use a validated actual Timestamp when available; otherwise use "
-            "CICIDS2017 capture-day/source-file provenance. Never substitute "
-            "Flow Duration, Total TCP Flow Time, packet counts, or IAT features."
+            "Use whole capture-day files for the Monday–Thursday / Friday split. "
+            "Row timestamps are excluded from predictors and do not define this split."
         ),
         "quick_validation": QUICK_VALIDATION,
         "paper_mode": PAPER_MODE,
         "fast_train_samples": FAST_TRAIN_SAMPLES,
         "fast_sampling": "stratified" if FAST_SAMPLING_STRATIFIED else "uniform",
-        "seeds": list(SEEDS),
+        "seeds": list(SEEDS) if PAPER_MODE else [SEED],
         "models": MODEL_NAMES,
         "tasks": ["binary", "multiclass"],
         "missingness_levels": list(MISSINGNESS_LEVELS),
@@ -236,3 +235,14 @@ with open(OUTPUT_DIR / "dataset_file_validation.json", "w") as f:
 
 print("Exports written to:", OUTPUT_DIR)
 
+
+from src.dataset_audit import class_coverage
+from src.evidence import finalize
+from src.runtime_info import save_peak_memory
+
+if RUN_EXPERIMENTS:
+    class_coverage(temporal_train_idx, temporal_test_idx, y_sorted).to_csv(
+        OUTPUT_DIR / "full_holdout_coverage.csv", index=False)
+    finalize(OUTPUT_DIR, repeated_results, SEEDS if PAPER_MODE else [SEED],
+             "Capture-day chronological holdout", numeric_features)
+    save_peak_memory(OUTPUT_DIR)
