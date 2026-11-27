@@ -23,3 +23,9 @@ The UNSW recovery entry point used in this revision independently validates
 the saved class labels against the pinned raw population, then recomputes
 metrics and sensitivity without refitting. Runtime and convergence diagnostics
 require original execution records.
+
+## Delivered verification checks
+
+- CICIDS2017 passed checksum, prediction, split, confusion-matrix and seed-summary checks for 180 evaluations in full-data paper mode. Seeds 42, 52, 62, 72, 82. [Validation metadata](../results/cicids2017/prediction_validation.json)
+- UNSW-NB15 metrics were recovered from the five fitted seeds' saved predictions after a plot export failure. Fit timing and convergence diagnostics from that execution were unavailable. [Recovery record](../results/unsw_nb15/recovery.json)
+- UNSW-NB15 passed checksum, prediction, split, confusion-matrix and seed-summary checks for 180 evaluations in full-data paper mode. Seeds 42, 52, 62, 72, 82. [Validation metadata](../results/unsw_nb15/prediction_validation.json)

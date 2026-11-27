@@ -1,0 +1,3 @@
+Dataset,Holdout,Train rows,Test rows,Feature count,Class count,Test-only classes,Classes with zero test support
+CICIDS2017,Capture-day chronological holdout,1416350,370259,82,27,"Botnet, Botnet - Attempted, DDoS, Portscan","DoS GoldenEye, DoS GoldenEye - Attempted, DoS Hulk, DoS Hulk - Attempted, DoS Slowhttptest, DoS Slowhttptest - Attempted, DoS Slowloris, DoS Slowloris - Attempted, FTP-Patator, FTP-Patator - Attempted, Heartbleed, Infiltration, Infiltration - Attempted, Infiltration - Portscan, SSH-Patator, SSH-Patator - Attempted, Web Attack - Brute Force, Web Attack - Brute Force - Attempted, Web Attack - SQL Injection, Web Attack - SQL Injection - Attempted, Web Attack - XSS, Web Attack - XSS - Attempted"
+UNSW-NB15,Official Train/Test Holdout,175341,82332,42,10,,

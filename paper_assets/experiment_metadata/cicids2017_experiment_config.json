@@ -2,12 +2,16 @@
   "dataset_source": "kumaranimesh1901/CICIDS-2017",
   "temporal_provenance": "capture_day_file_order",
   "timestamp_policy": "Use whole capture-day files for the Monday\u2013Thursday / Friday split. Row timestamps are excluded from predictors and do not define this split.",
-  "quick_validation": true,
-  "paper_mode": false,
+  "quick_validation": false,
+  "paper_mode": true,
   "fast_train_samples": 100000,
   "fast_sampling": "stratified",
   "seeds": [
-    42
+    42,
+    52,
+    62,
+    72,
+    82
   ],
   "models": [
     "Logistic Regression",

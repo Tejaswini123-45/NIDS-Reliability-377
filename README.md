@@ -2,8 +2,8 @@
 
 This project evaluates Logistic Regression, Random Forest and XGBoost on
 CICIDS2017 and UNSW-NB15. It reports binary and multiclass results separately.
-The checked-in historical `results/` and `conference_paper_assets/` are legacy
-material. Use the new prediction-audited output directories for revision evidence.
+Historical exports in `results/` and `conference_paper_assets/` are legacy
+material. The current results in `results/` are the `verified_*` exports and their prediction validation reports.
 
 ## Set up and acquire the data
 
@@ -79,5 +79,7 @@ See [results interpretation](RESULTS_EXPLANATION.md) and the
 [Run status](RUN_STATUS.json) identifies the verified seeds and run modes
 behind the checked-in tables and figures in `paper_assets/`. The full
 prediction archives and split IDs are generated locally by the commands
-above. The CICIDS2017 snapshot is preliminary, and the UNSW-NB15 snapshot
-contains the five-seed results recovered from saved predictions.
+above. Both dataset snapshots contain 180 verified full-data evaluations
+across five seeds. The [cross-dataset comparison](paper_assets/cross_dataset/comparison_metadata.json)
+is descriptive. UNSW-NB15 metrics were recovered from saved predictions,
+and its computational-cost table uses labeled capped-run measurements.

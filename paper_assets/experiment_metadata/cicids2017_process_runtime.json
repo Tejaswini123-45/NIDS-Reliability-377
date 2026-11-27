@@ -1,5 +1,5 @@
 {
-  "peak_resident_bytes": 3433787392,
+  "peak_resident_bytes": 5864501248,
   "scope": "Whole experiment process through validation and artifact export",
   "thread_environment": {
     "OPENBLAS_NUM_THREADS": "2",

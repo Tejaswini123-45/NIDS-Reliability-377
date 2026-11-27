@@ -74,3 +74,32 @@ description with the submitted version before drafting the response.
 - MAWIFlow (2026) constructs future-year holdouts with longitudinal flow
   data and offers a comparison for longer time horizons.
   [Primary paper](https://www.scitepress.org/Papers/2026/144639/144639.pdf)
+
+## Verified runs in this package
+
+
+### CICIDS2017
+
+Full-data paper mode with seed(s) 42, 52, 62, 72, 82. [Prediction-audited metrics](results/cicids2017/verified_seed_metrics.csv)
+
+| Task | Model | Reference macro F1 | Holdout macro F1 |
+| --- | --- | ---: | ---: |
+| binary | Logistic Regression | 0.9823 | 0.9852 |
+| binary | Random Forest | 0.9993 | 0.9919 |
+| binary | XGBoost | 0.9983 | 0.9896 |
+| multiclass | Logistic Regression | 0.4559 | 0.0367 |
+| multiclass | Random Forest | 0.8632 | 0.0328 |
+| multiclass | XGBoost | 0.8128 | 0.0369 |
+
+### UNSW-NB15
+
+Full-data paper mode with seed(s) 42, 52, 62, 72, 82. [Prediction-audited metrics](results/unsw_nb15/verified_seed_metrics.csv)
+
+| Task | Model | Reference macro F1 | Holdout macro F1 |
+| --- | --- | ---: | ---: |
+| binary | Logistic Regression | 0.8897 | 0.7935 |
+| binary | Random Forest | 0.9356 | 0.9026 |
+| binary | XGBoost | 0.9302 | 0.8509 |
+| multiclass | Logistic Regression | 0.3769 | 0.3325 |
+| multiclass | Random Forest | 0.5514 | 0.4586 |
+| multiclass | XGBoost | 0.5369 | 0.4644 |

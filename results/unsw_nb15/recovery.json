@@ -1,0 +1,12 @@
+{
+  "source": "verified_runs\\paper\\unsw_nb15",
+  "evaluations_recomputed_from_predictions": 180,
+  "training_or_prediction_repeated": false,
+  "unavailable_original_measurements": [
+    "fit timing",
+    "prediction timing",
+    "peak memory",
+    "LR convergence"
+  ],
+  "missingness_counts": "Recomputed from the original masks and pinned inputs"
+}

@@ -1,0 +1,23 @@
+{
+  "paper_mode": true,
+  "shared_seeds": [
+    42,
+    52,
+    62,
+    72,
+    82
+  ],
+  "inputs": {
+    "cicids2017": {
+      "source": "verified_runs\\full-revision\\cicids2017",
+      "paper_mode": true,
+      "holdout": "Capture-day chronological holdout"
+    },
+    "unsw_nb15": {
+      "source": "verified_runs\\full-revision\\unsw_nb15",
+      "paper_mode": true,
+      "holdout": "Official Train/Test Holdout"
+    }
+  },
+  "scope": "Descriptive within-dataset changes. The two label universes, features and partitions differ."
+}
